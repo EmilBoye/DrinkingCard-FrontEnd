@@ -1,6 +1,11 @@
-<nav class="navbar navbar-light bg-light">
-  <a routerLink="/forside" routerLinkActive="active">Hjem</a>
-  <a routerLink="/film" routerLinkActive="active">Alkohol</a>
-  <a routerLink="/genre" routerLinkActive="active">Alkohol Fri</a>
-  <a routerLink="/biograf-hal" routerLinkActive="active">Login</a>
-</nav>
+<header>
+  <div class="navbar navbar-expand-lg navbar-dark bg-dark header-container">
+    <!-- <a class="navbar-brand" routerLink="/">Test</a> -->
+    <a routerLink="/" routerLinkActive="active">Hjem</a>
+    <a routerLink="/alko" routerLinkActive="active">Alkohol</a>
+    <a routerLink="/alkofri" routerLinkActive="active">Alkohol Fri</a>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-primary my-2 my-sm-0 mr-sm-2" data-toggle="modal" data-bs-target="#signUpModal">Opret</button>
+    </form>
+  </div>
+</header>
