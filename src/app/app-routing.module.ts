@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AlcoholComponent } from './alcohol/alcohol.component';
 import { AppComponent } from './app.component';
+import { FrontpageComponent } from './frontpage/frontpage.component';
 import { HeaderComponent } from './header/header.component';
 import { NonalcoholComponent } from './nonalcohol/nonalcohol.component';
 
 const routes: Routes = [
   { path: '', pathMatch:'full', redirectTo:'/'},
   {
-    path: 'hjem', component: HeaderComponent,
+    path: 'hjem', component: FrontpageComponent,
   },
   {
     path: 'alko', component: AlcoholComponent

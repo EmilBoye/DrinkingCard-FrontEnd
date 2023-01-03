@@ -8,11 +8,13 @@ import { AlcoholComponent } from './alcohol/alcohol.component';
 import { NonalcoholComponent } from './nonalcohol/nonalcohol.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FrontpageComponent } from './frontpage/frontpage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
+    FrontpageComponent,
   ],
   imports: [
     BrowserModule,
