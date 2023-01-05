@@ -15,7 +15,7 @@ export class HttpService {
   getUser(): Observable<User[]>{
     return this.http.get<User[]>(this.apiBaseUrl + '/api/user');
   }
-  postUser(): Observable<User[]>{
-    return this.http.post<User[]>(this.apiBaseUrl + '/api/User');
+  getUserById(id: string): Observable<User[]>{
+    return this.http.get<User[]>(this.apiBaseUrl + '/api/User/' + id);
   }
 }

@@ -1,18 +1,23 @@
 <header>
-  <nav class="navbar">
-    <div class="topnavi">
+  <nav class="overflow-hidden bg-gray-500">
+    <div class="float-left text-center font-mono no-underline px-3 flex space-x-6">
       <!-- <a class="navbar-brand" routerLink="/">Test</a> -->
       <title>DrinkingCard</title>
+      <img class="logo" src="/photo/screamingcowboylol.jpg">
       <a routerLink="/hjem" routerLinkActive="active">Hjem</a>
       <a routerLink="/alko" routerLinkActive="active">Alkohol</a>
       <a routerLink="/alkofri" routerLinkActive="active">Alkohol Fri</a>
-      <form [formGroup]="createUserForm"
-      (ngSubmit)="onSubmit()">
-        <button type="button" class="create" (click)="onSubmit()">Opret</button>
-      </form>
-      <form>
-        <button type="button" class="login">Login</button>
-      </form>
+
+      <div class="float-right bg-sky-600 flex flex-row-reverse space-x-6 space-x-reverse">
+        <form [formGroup]="createUserForm"
+        (ngSubmit)="onSubmit()">
+          <button type="button" class="create" (click)="onSubmit()">Opret</button>
+        </form>
+        <form>
+          <button type="button" class="login">Login</button>
+        </form>
+      </div>
+
     </div>
   </nav>
 </header>
