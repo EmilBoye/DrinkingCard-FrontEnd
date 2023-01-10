@@ -12,10 +12,13 @@ export class HttpService {
   constructor(private http:HttpClient) { }
 
   apiBaseUrl = environment.apiBaseUrl;
-  getUser(): Observable<User[]>{
-    return this.http.get<User[]>(this.apiBaseUrl + '/api/user');
+  getAllUser(): Observable<User[]>{
+    return this.http.get<User[]>(this.apiBaseUrl + '/api/User');
   }
   getUserById(id: string): Observable<User[]>{
     return this.http.get<User[]>(this.apiBaseUrl + '/api/User/' + id);
+  }
+  postUser(userInfo:any): Observable<User[]>{
+    return this.http.post<User[]>(this.apiBaseUrl, userInfo);
   }
 }

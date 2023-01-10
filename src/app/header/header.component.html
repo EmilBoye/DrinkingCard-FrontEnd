@@ -1,22 +1,26 @@
 <header>
-  <nav class="overflow-hidden bg-gray-500 m-0 py-7">
-    <div class="container mx-auto float-left text-center font-mono no-underline px-3 flex space-x-6 text-lg text-white">
+  <nav class="overflow-hidden bg-gray-500 py-10 ">
+    <div class="justify-between m-0 flex grid-cols-3">
+
+      <div class="justify-center m-0 float-left text-center font-mono no-underline px-3 flex space-x-6 text-xl text-white">
       <!-- <a class="navbar-brand" routerLink="/">Test</a> -->
-      <title>DrinkingCard</title>
-      <img class="logo" src="/photo/screamingcowboylol.jpg">
+      <a routerLink="/hjem"><img src="../../assets/photo/image.png" alt="Logo" class="h-8"></a>
       <a routerLink="/hjem" routerLinkActive="active">Hjem</a>
       <a routerLink="/alko" routerLinkActive="active">Alkohol</a>
       <a routerLink="/alkofri" routerLinkActive="active">Alkohol Fri</a>
+      </div>
 
-      <form [formGroup]="createUserForm"
-        (ngSubmit)="onSubmit()">
-        <button type="button" (click)="onSubmit()" class="bg-blue-500 hover:bg-blue-700
-        text-white font-bold py-1 px-4 rounded-full">Opret</button>
-      </form>
-      <form>
-        <button type="button" (click)="onSubmit()" class="bg-blue-500 hover:bg-blue-700
-        text-white font-bold py-1 px-4 rounded-full">Login</button>
-      </form>
+      <div class="flex grid-cols-2 m-0 px-10 space-x-4">
+        <form [formGroup]="createUserForm"
+          (ngSubmit)="onSubmit()">
+          <button type="button" (click)="onCreate('userInfo')" class="bg-blue-500 hover:bg-blue-700
+          text-white font-bold py-1 px-4 rounded-full">Opret</button>
+        </form>
+        <form>
+          <button type="button" (click)="onSubmit()" class="bg-blue-500 hover:bg-blue-700
+          text-white font-bold py-1 px-4 rounded-full">Login</button>
+        </form>
+      </div>
 
     </div>
   </nav>

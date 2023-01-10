@@ -13,14 +13,14 @@ import { HttpService } from '../service/httpservice.service';
 export class HeaderComponent implements OnInit {
   //users: User[];
   confirmPass: any;
-  //userObj: User = {UserId: 0, roleId: 0, role:, userName: "", passwordHash: ""}
+  userObj: User = {UserId: 0, roleId: 0, role:RoleType.User, userName: "", passwordHash: ""}
   userChecked: boolean = true;
   //userId: number;
 
   constructor(private service:HttpService) { }
 
   createUserForm = new FormGroup({
-    //userName: new FormControl(this.userObj.userName, [Validators.required]),
+    userName: new FormControl(this.userObj.userName, [Validators.required]),
     passwordHash: new FormControl(''),
   });
   loginForm = new FormGroup({
@@ -28,13 +28,18 @@ export class HeaderComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.service.getUser().subscribe(respone =>{
-      console.log(respone);
-      ;
+  }
+  onCreate(userinfo:string):void{
+    this.service.postUser(userinfo).subscribe(response=>{
+      console.log(response);
+
     })
   }
   onSubmit():void{
     console.log("Knap virker");
-
+    this.service.getAllUser().subscribe(respone =>{
+      console.log(respone);
+      ;
+    })
   }
 }
