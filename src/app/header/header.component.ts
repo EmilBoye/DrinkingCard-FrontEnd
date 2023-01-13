@@ -15,14 +15,16 @@ export class HeaderComponent implements OnInit {
   confirmPass: any;
   userObj: User = {UserId: 0, roleId: 0, role:RoleType.User, userName: "", passwordHash: ""}
   userChecked: boolean = true;
+  showModal = false;
   //userId: number;
 
   constructor(private service:HttpService) { }
 
   createUserForm = new FormGroup({
-    userName: new FormControl(this.userObj.userName, [Validators.required]),
-    passwordHash: new FormControl(''),
+    userName: new FormControl('', [Validators.required]),
+    passwordHash: new FormControl('', [Validators.required]),
   });
+
   loginForm = new FormGroup({
 
   });
@@ -30,14 +32,21 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   onCreate(userinfo:string):void{
-    this.service.postUser(userinfo).subscribe(response=>{
-      console.log(response);
 
+    this.showModal = true;
+    console.log("test");
+
+    this.service.postUser(userinfo).subscribe(response=>{
+    console.log(response);
     })
+  }
+
+  onLogin():void{
+    this.showModal = false;
   }
   onSubmit():void{
     console.log("Knap virker");
-    this.service.getAllUser().subscribe(respone =>{
+    this.service.getUser().subscribe(respone =>{
       console.log(respone);
       ;
     })

@@ -12,7 +12,7 @@ export class HttpService {
   constructor(private http:HttpClient) { }
 
   apiBaseUrl = environment.apiBaseUrl;
-  getAllUser(): Observable<User[]>{
+  getUser(): Observable<User[]>{
     return this.http.get<User[]>(this.apiBaseUrl + '/api/User');
   }
   getUserById(id: string): Observable<User[]>{
@@ -20,5 +20,8 @@ export class HttpService {
   }
   postUser(userInfo:any): Observable<User[]>{
     return this.http.post<User[]>(this.apiBaseUrl, userInfo);
+  }
+  updateUser(userUpdate:any): Observable<User[]>{
+    return this.http.put<User[]>(this.apiBaseUrl, userUpdate);
   }
 }

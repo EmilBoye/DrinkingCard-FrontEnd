@@ -1,8 +1,8 @@
 <header>
   <nav class="overflow-hidden bg-gray-500 py-10 ">
-    <div class="justify-between m-0 flex grid-cols-3">
+    <div class="flex justify-between items-center m-0 grid-cols-3">
 
-      <div class="justify-center m-0 float-left text-center font-mono no-underline px-3 flex space-x-6 text-xl text-white">
+      <div class="flex justify-center items-center m-0 float-left text-center font-mono no-underline px-3 space-x-6 text-xl text-white">
       <!-- <a class="navbar-brand" routerLink="/">Test</a> -->
       <a routerLink="/hjem"><img src="../../assets/photo/image.png" alt="Logo" class="h-8"></a>
       <a routerLink="/hjem" routerLinkActive="active">Hjem</a>
@@ -11,17 +11,52 @@
       </div>
 
       <div class="flex grid-cols-2 m-0 px-10 space-x-4">
-        <form [formGroup]="createUserForm"
-          (ngSubmit)="onSubmit()">
+        <form>
+          <button type="button" (click)="onLogin()" class="bg-blue-500 hover:bg-blue-700
+          text-white font-bold py-1 px-4 rounded-full">Login</button>
+        </form>
+        <form>
           <button type="button" (click)="onCreate('userInfo')" class="bg-blue-500 hover:bg-blue-700
           text-white font-bold py-1 px-4 rounded-full">Opret</button>
         </form>
-        <form>
-          <button type="button" (click)="onSubmit()" class="bg-blue-500 hover:bg-blue-700
-          text-white font-bold py-1 px-4 rounded-full">Login</button>
+
+        <!--Create form-->
+        <div class="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50"*ngIf="showModal"></div>
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50"*ngIf="showModal">
+          <div class="bg-white rounded-lg p-6">
+            <h2 class="text-lg font-medium mb-4 text-center">Opret</h2>
+        <form [formGroup]="createUserForm"
+          (ngSubmit)="onCreate('userInfo')">
+          <div class="mb-4">
+            <label class="block text-gray-700 font-medium mb-2" for="username">Brugernavn</label>
+            <input class="border border-gray-400 p-2 rounded-lg w-full"
+            type="text"
+            formControlName="userName"
+            placeholder="Brugernavn"/>
+            <!-- <div class="text-red-500" *ngIf="createUserForm.get('userName').invalid && createUserForm.get('userName').touched">
+              Brugernavn kræves
+            </div> -->
+              <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-2" for="passwordHash">
+                  Adgangskode
+                </label>
+                <input
+                class="border border-gray-400 p-2 rounded-lg w-full"
+                type="password"
+                formControlName="passwordHash"
+                placeholder="Adgangskode"/>
+              </div>
+              <div class="flex justify-end">
+
+              </div>
+            <button class="text-gray-500 text-sm mt-4 float-right" (click)="showModal = false">ESC</button>
+          </div>
         </form>
+        </div>
+
+      </div>
+      </div>
       </div>
 
-    </div>
   </nav>
 </header>
