@@ -12,6 +12,8 @@ export class HttpService {
   constructor(private http:HttpClient) { }
 
   apiBaseUrl = environment.apiBaseUrl;
+
+  // User Crud.
   getUser(): Observable<User[]>{
     return this.http.get<User[]>(this.apiBaseUrl + '/api/User');
   }
@@ -23,5 +25,8 @@ export class HttpService {
   }
   updateUser(id:number, updateUser: User): Observable<User[]>{
     return this.http.put<User[]>(this.apiBaseUrl + '/api/User/' + id, updateUser);
+  }
+  deleteUser(id:number): Observable<User[]>{
+    return this.http.delete<User[]>(this.apiBaseUrl + '/api/User/' + id);
   }
 }
