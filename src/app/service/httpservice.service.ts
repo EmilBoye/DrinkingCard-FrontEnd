@@ -15,13 +15,13 @@ export class HttpService {
   getUser(): Observable<User[]>{
     return this.http.get<User[]>(this.apiBaseUrl + '/api/User');
   }
-  getUserById(id: string): Observable<User[]>{
+  getUserById(id: number): Observable<User[]>{
     return this.http.get<User[]>(this.apiBaseUrl + '/api/User/' + id);
   }
-  postUser(userInfo:any): Observable<User[]>{
-    return this.http.post<User[]>(this.apiBaseUrl, userInfo);
+  postUser(userinfo:User): Observable<User[]>{
+    return this.http.post<User[]>(this.apiBaseUrl + '/api/User/', userinfo);
   }
-  updateUser(userUpdate:any): Observable<User[]>{
-    return this.http.put<User[]>(this.apiBaseUrl, userUpdate);
+  updateUser(id:number, updateUser: User): Observable<User[]>{
+    return this.http.put<User[]>(this.apiBaseUrl + '/api/User/' + id, updateUser);
   }
 }

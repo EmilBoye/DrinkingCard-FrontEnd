@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Alcohol } from '../models/Alcohol-model';
 
 @Component({
   selector: 'app-frontpage',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontpageComponent implements OnInit {
 
+  alcoholDrinks: Alcohol[] = [];
   constructor() { }
 
   ngOnInit(): void {

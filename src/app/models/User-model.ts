@@ -5,6 +5,6 @@ export interface User{
   UserId : number;
   roleId : number;
   role : RoleType;
-  userName : string;
-  passwordHash : string;
+  userName? : string;
+  passwordHash? : string;
 }

@@ -13,11 +13,11 @@
       <div class="flex grid-cols-2 m-0 px-10 space-x-4">
         <form>
           <button type="button" (click)="onLogin()" class="bg-blue-500 hover:bg-blue-700
-          text-white font-bold py-1 px-4 rounded-full">Login</button>
+          text-white text-lg font-mono py-1 px-4 rounded-full">Login</button>
         </form>
         <form>
-          <button type="button" (click)="onCreate('userInfo')" class="bg-blue-500 hover:bg-blue-700
-          text-white font-bold py-1 px-4 rounded-full">Opret</button>
+          <button type="button" (click)="onCreate()" class="bg-blue-500 hover:bg-blue-700
+          text-white text-lg font-mono py-1 px-4 rounded-full">Opret</button>
         </form>
 
         <!--Create form-->
@@ -25,17 +25,18 @@
         <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50"*ngIf="showModal">
           <div class="bg-white rounded-lg p-6">
             <h2 class="text-lg font-medium mb-4 text-center">Opret</h2>
-        <form [formGroup]="createUserForm"
-          (ngSubmit)="onCreate('userInfo')">
+            <form [formGroup]="createUserForm"
+          (ngSubmit)="onCreate()">
           <div class="mb-4">
             <label class="block text-gray-700 font-medium mb-2" for="username">Brugernavn</label>
             <input class="border border-gray-400 p-2 rounded-lg w-full"
             type="text"
             formControlName="userName"
             placeholder="Brugernavn"/>
-            <!-- <div class="text-red-500" *ngIf="createUserForm.get('userName').invalid && createUserForm.get('userName').touched">
-              Brugernavn kræves
-            </div> -->
+            <div class="text-red-500">
+
+            </div>
+
               <div class="mb-4">
                 <label class="block text-gray-700 font-medium mb-2" for="passwordHash">
                   Adgangskode
@@ -46,13 +47,13 @@
                 formControlName="passwordHash"
                 placeholder="Adgangskode"/>
               </div>
-              <div class="flex justify-end">
-
+              <div class="flex justify-center space-x-4 grid-cols-2">
+                <button class="bg-blue-500 text-white p-2 rounded-lg" (click)="onCreate()" [disabled]="createUserForm.invalid">Opret</button>
+                <button class="text-gray-500 text-sm mt-4 float-right" (click)="showModal = false">ESC</button>
               </div>
-            <button class="text-gray-500 text-sm mt-4 float-right" (click)="showModal = false">ESC</button>
+            </div>
+            </form>
           </div>
-        </form>
-        </div>
 
       </div>
       </div>
