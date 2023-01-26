@@ -15,7 +15,8 @@ export class HeaderComponent implements OnInit {
   confirmPass: any;
   userObject: User = {UserId: 0, roleId: 0, role:RoleType.User, userName: "", passwordHash: ""}
   userChecked: boolean = true;
-  showModal = false;
+  showCreateModal = false;
+  showLoginModal = false;
   userId: number[] = [];
 
   constructor(private service:HttpService) { }
@@ -54,7 +55,7 @@ export class HeaderComponent implements OnInit {
     // }
   }
   onCreate():void{
-    this.showModal = true;
+    this.showCreateModal = true;
     console.warn(this.createUserForm.value);
     this.service.getUser().subscribe(response => {console.log(response);
     })
@@ -62,7 +63,7 @@ export class HeaderComponent implements OnInit {
     })
   }
   onLogin():void{
-    this.showModal = true;
+    this.showLoginModal = true;
     //this.userObject.userName = this.loginForm.value.userName;
     if(this.confirmPass.value == this.loginForm.value.passwordHash){
       if(this.loginForm.value.passwordHash?.length)
