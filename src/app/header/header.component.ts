@@ -13,7 +13,7 @@ import { HttpService } from '../service/httpservice.service';
 export class HeaderComponent implements OnInit {
   users: User[] = [];
   confirmPass: any;
-  userObject: User = {UserId: 0, roleId: 0, role:RoleType.User, userName: "", passwordHash: ""}
+  userObject: User = {userId: 0, roleId: 0, role:RoleType.User, userName: "", passwordHash: ""}
   userChecked: boolean = true;
   showCreateModal = false;
   showLoginModal = false;
@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   constructor(private service:HttpService) { }
 
   createUserForm = new FormGroup({
-    UserId: new FormControl(),
+    userId: new FormControl(),
     roleId: new FormControl(),
     role: new FormControl(RoleType.User),
     userName: new FormControl('', [Validators.required]),
@@ -32,12 +32,12 @@ export class HeaderComponent implements OnInit {
   });
 
   loginForm = new FormGroup({
-    UserId: new FormControl(0),
+    userId: new FormControl(0),
     roleId: new FormControl(0),
     userName: new FormControl('', [Validators.required]),
     passwordHash: new FormControl('', [Validators.required]),
 
-    RoleType: new FormControl(RoleType.User),
+    roleType: new FormControl(RoleType.User),
 
   });
 

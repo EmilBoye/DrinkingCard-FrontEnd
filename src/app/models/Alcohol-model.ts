@@ -22,16 +22,16 @@ export enum AlcoholType{
 }
 
 export interface Alcohol{
-  AlcoId:number;
-  Author?:string;
-  Title?:string;
-  Description?:string;
-  Strength?:string;
-  Ingredients?:string
+  alcoId:number;
+  author?:string;
+  title?:string;
+  description?:string;
+  strength?:string;
+  ingredients?:string
   alcoholType:AlcoholType;
-  Visible:boolean;
+  visible:boolean;
   //UserId:number;
   user:User
-  PublishDate?:Date;
-  UpdatedDate?:Date;
+  publishDate?:Date;
+  updatedDate?:Date;
 }
