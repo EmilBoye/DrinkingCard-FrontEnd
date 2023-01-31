@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Alcohol } from '../models/Alcohol-model';
 import { User } from '../models/User-model';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class HttpService {
 
   apiBaseUrl = environment.apiBaseUrl;
 
-  // User Crud.
+  // User CRUD.
   getUser(): Observable<User[]>{
     return this.http.get<User[]>(this.apiBaseUrl + '/api/User');
   }
@@ -28,5 +29,23 @@ export class HttpService {
   }
   deleteUser(id:number): Observable<User[]>{
     return this.http.delete<User[]>(this.apiBaseUrl + '/api/User/' + id);
+  }
+
+
+  //Alcohol CRUD
+  getAlcohol():Observable<Alcohol[]>{
+    return this.http.get<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/');
+  }
+  getAlcoholById(id: number): Observable<Alcohol[]>{
+    return this.http.get<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id);
+  }
+  postDrink(alcoinfo:Alcohol): Observable<Alcohol[]>{
+    return this.http.post<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/', alcoinfo);
+  }
+  updateDrink(id:number, updateDrink: Alcohol): Observable<Alcohol[]>{
+    return this.http.put<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id, updateDrink);
+  }
+  deleteDrink(id:number): Observable<Alcohol[]>{
+    return this.http.delete<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id);
   }
 }

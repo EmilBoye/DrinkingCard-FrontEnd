@@ -22,8 +22,8 @@ export class HeaderComponent implements OnInit {
   constructor(private service:HttpService) { }
 
   createUserForm = new FormGroup({
-    UserId: new FormControl(0),
-    roleId: new FormControl(0),
+    UserId: new FormControl(),
+    roleId: new FormControl(),
     role: new FormControl(RoleType.User),
     userName: new FormControl('', [Validators.required]),
     passwordHash: new FormControl('', [Validators.required]),

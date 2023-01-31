@@ -1,6 +1,26 @@
 <div class="bg-gray-300 text-center py-7">
-    <div class="">
-      <p class="text-lg font-mono">Anbefalet Drinks</p>
+  <p class="text-lg font-mono">Anbefalet Drinks</p>
+    <div *ngFor="let drink of alcoholDrinks">
+      <h1>ID: {{drink.AlcoId}}</h1>
+      <h1>Udgivet af: {{drink.Author}}</h1>
+      <h1>Titel: {{drink.Title}}</h1>
+      <h1>Styrke: {{drink.Strength}}</h1>
+      <h1>Beskrivelse: {{drink.Description}}</h1>
+      <h1>Ingredienser: {{drink.Ingredients}}</h1>
+      <h1>Alkohol Type: {{drink.alcoholType}}</h1>
+      <h1>Synlighed: {{drink.Visible}}</h1>
+      <h1>Bruger: {{drink.user}}</h1>
+      <h1>Slået op: {{drink.PublishDate}}</h1>
+      <h1>Opdateret: {{drink.UpdatedDate}}</h1>
+
+
+      <div *ngFor="let lars of users">
+        <h1>user: {{lars.userName}}</h1>
+        <h1>password: {{lars.passwordHash}}</h1>
+        <h1>userid {{lars.UserId}}</h1>
+        <h1>roleId {{lars.roleId}}</h1>
+        <h1>role {{lars.role}}</h1>
+      </div>
 <!-- <div *ngFor="let drinks of alcoholDrinks">
   <h1>{{drinks}}</h1>
 </div> -->
