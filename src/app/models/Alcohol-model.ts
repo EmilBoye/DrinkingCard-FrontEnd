@@ -26,6 +26,7 @@ export class Alcohol{
   public author?:string;
   public title?:string;
   public description?:string;
+  public featuredImageUrl?:string;
   public strength?:string;
   public ingredients?:string
   public alcoholType:AlcoholType;

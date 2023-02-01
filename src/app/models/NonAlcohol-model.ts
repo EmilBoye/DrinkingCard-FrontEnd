@@ -5,6 +5,7 @@ export class NonAlcohol{
   public author?:string;
   public title?:string;
   public description?:string;
+  public featuredImageUrl?:string;
   public ingredients?:string
   public visible:boolean;
   public user:User
