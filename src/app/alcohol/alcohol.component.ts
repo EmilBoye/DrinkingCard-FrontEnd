@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Alcohol } from '../models/Alcohol-model';
+import { Alcohol, AlcoholType } from '../models/Alcohol-model';
+import { User } from '../models/User-model';
 
 @Component({
   selector: 'app-alcohol',
@@ -8,10 +9,21 @@ import { Alcohol } from '../models/Alcohol-model';
 })
 export class AlcoholComponent implements OnInit {
 
-  alcohol:Alcohol[] = [];
-  isVisible:boolean = false;
   constructor() { }
 
+  alcoholPost: Alcohol =
+  {
+    alcoId: 0,
+    author: '',
+    title: '',
+    description: '',
+    featuredImageUrl: '',
+    strength: '',
+    ingredients: '',
+    alcoholType: AlcoholType.ALÉ,
+    visible: true,
+    user: new User
+  }
   ngOnInit(): void {
   }
 

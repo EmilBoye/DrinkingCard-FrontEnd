@@ -12,6 +12,7 @@ export class FrontpageComponent implements OnInit {
 
   alcoholDrinks: Alcohol[] = [];
   users: User[] = [];
+
   constructor(private alcoholService:HttpService) { }
 
   ngOnInit(): void {
@@ -21,15 +22,11 @@ export class FrontpageComponent implements OnInit {
       console.log(data);
     })
 
-
     this.alcoholService.getUser().subscribe(data=> {
       this.users = data;
       console.log(data);
 
     })
-    const Test ={
-      Title: 'Test'
-    }
   }
 
 }

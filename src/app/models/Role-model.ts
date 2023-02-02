@@ -3,8 +3,8 @@ export enum RoleType{
   User = 20,
   Admin = 30
 }
-export interface Role{
-  roleId : number;
-  roleType : RoleType;
-  level : number;
+export class Role{
+  public roleId : number;
+  public roleType : RoleType;
+  public level : number;
 }

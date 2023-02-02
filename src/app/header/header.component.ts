@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
-import { RoleType } from '../models/Role-model';
+import { Role, RoleType } from '../models/Role-model';
 import { User } from 'src/app/models/User-model';
 import { HttpService } from '../service/httpservice.service';
 
@@ -19,6 +19,15 @@ export class HeaderComponent implements OnInit {
   showLoginModal = false;
   userId: number[] = [];
 
+
+  createUser: User =
+    {
+      userName: '',
+      passwordHash: '',
+      userId: 0,
+      roleId: 0,
+      role: RoleType.User
+    };
   constructor(private service:HttpService) { }
 
   createUserForm = new FormGroup({
@@ -56,10 +65,10 @@ export class HeaderComponent implements OnInit {
   }
   onCreate():void{
     this.showCreateModal = true;
-    console.warn(this.createUserForm.value);
+    console.warn(this.createUser);
     this.service.getUser().subscribe(response => {console.log(response);
     })
-    this.service.postUser(this.userObject).subscribe(response=>{console.log(response);
+    this.service.postUser(this.createUser).subscribe(response=>{console.log(response);
     })
   }
   onLogin():void{

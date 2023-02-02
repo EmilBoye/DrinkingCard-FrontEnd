@@ -21,17 +21,18 @@ export enum AlcoholType{
   Champagne,
 }
 
-export interface Alcohol{
-  alcoId:number;
-  author?:string;
-  title?:string;
-  description?:string;
-  strength?:string;
-  ingredients?:string
-  alcoholType:AlcoholType;
-  visible:boolean;
+export class Alcohol{
+  public alcoId:number;
+  public author?:string;
+  public title?:string;
+  public description?:string;
+  public featuredImageUrl?:string;
+  public strength?:string;
+  public ingredients?:string
+  public alcoholType:AlcoholType;
+  public visible:boolean;
   //UserId:number;
-  user:User
-  publishDate?:Date;
-  updatedDate?:Date;
+  public user:User
+  public publishDate?:Date;
+  public updatedDate?:Date;
 }
