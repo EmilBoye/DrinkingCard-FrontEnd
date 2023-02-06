@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   createUserForm: any = new FormGroup({});
   users: User[] = [];
   confirmPass: any;
-  @Input() nyBruger = {role:RoleType.User, userName: "", passwordHash: ""}
+  @Input() nyBruger = {roleId: 0, role:RoleType.User, userName: "", passwordHash: ""}
   userChecked: boolean = true;
   showCreateModal = false;
   showLoginModal = false;
@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.createUserForm = this.formBuilder.group({
+        roleId: new FormControl(''),
         role: new FormControl(''),
         userName: new FormControl('', [Validators.required]),
         passwordHash: new FormControl('', [Validators.required]),
@@ -77,10 +78,9 @@ export class HeaderComponent implements OnInit {
 
   }
   onSubmit():void{
-
     this.service.postUser(this.nyBruger).subscribe(response=>{console.log(response);
-     })
-    console.log("Ny bruger",this.nyBruger);
+      console.log("Ny bruger",this.nyBruger);
+    });
   }
   /*const nameToPost = {
       userName:'Emil',
