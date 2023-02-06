@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Alcohol, AlcoholType } from '../models/Alcohol-model';
 import { User } from '../models/User-model';
+import { HttpService } from '../service/httpservice.service';
 
 @Component({
   selector: 'app-alcohol',
@@ -9,22 +10,14 @@ import { User } from '../models/User-model';
 })
 export class AlcoholComponent implements OnInit {
 
-  constructor() { }
+  constructor(private alcoholService:HttpService) { }
 
-  alcoholPost: Alcohol =
-  {
-    alcoId: 0,
-    author: '',
-    title: '',
-    description: '',
-    featuredImageUrl: '',
-    strength: '',
-    ingredients: '',
-    alcoholType: AlcoholType.ALÉ,
-    visible: true,
-    user: new User
-  }
+
   ngOnInit(): void {
+
   }
 
+  onSubmit():void{
+
+  }
 }

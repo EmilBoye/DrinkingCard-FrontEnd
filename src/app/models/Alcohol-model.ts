@@ -23,16 +23,16 @@ export enum AlcoholType{
 
 export class Alcohol{
   public alcoId:number;
-  public author?:string;
-  public title?:string;
-  public description?:string;
-  public featuredImageUrl?:string;
-  public strength?:string;
-  public ingredients?:string
+  public author:string;
+  public title:string;
+  public description:string;
+  public featuredImageUrl:string;
+  public strength:string;
+  public ingredients:string
   public alcoholType:AlcoholType;
   public visible:boolean;
   //UserId:number;
   public user:User
-  public publishDate?:Date;
-  public updatedDate?:Date;
+  public publishDate:Date;
+  public updatedDate:Date;
 }
