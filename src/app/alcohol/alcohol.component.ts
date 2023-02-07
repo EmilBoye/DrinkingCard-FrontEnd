@@ -14,9 +14,15 @@ export class AlcoholComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.alcoholService.getDrink().subscribe(a => {
+      console.log("Alkohol",a);
 
+    });
   }
 
+  createDrink():void{
+
+  }
   onSubmit():void{
 
   }

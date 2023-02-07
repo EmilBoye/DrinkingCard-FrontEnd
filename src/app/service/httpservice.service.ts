@@ -33,16 +33,16 @@ export class HttpService {
 
 
   //Alcohol CRUD
-  getAlcohol():Observable<Alcohol[]>{
+  getDrink():Observable<Alcohol[]>{
     return this.http.get<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/');
   }
-  getAlcoholById(id: number): Observable<Alcohol[]>{
+  getDrinkById(id: number): Observable<Alcohol[]>{
     return this.http.get<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id);
   }
   postDrink(alcoinfo:Alcohol): Observable<Alcohol[]>{
     return this.http.post<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/', alcoinfo);
   }
-  updateDrink(id:number, updateDrink: Alcohol): Observable<Alcohol[]>{
+  updateDrink(id:number | undefined, updateDrink: Alcohol): Observable<Alcohol[]>{
     return this.http.put<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id, updateDrink);
   }
   deleteDrink(id:number): Observable<Alcohol[]>{

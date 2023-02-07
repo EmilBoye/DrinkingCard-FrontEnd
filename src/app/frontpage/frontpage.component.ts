@@ -16,7 +16,7 @@ export class FrontpageComponent implements OnInit {
   constructor(private alcoholService:HttpService) { }
 
   ngOnInit(): void {
-    this.alcoholService.getAlcohol().subscribe(data => {
+    this.alcoholService.getDrink().subscribe(data => {
 
       this.alcoholDrinks = data;
       console.log(data);
