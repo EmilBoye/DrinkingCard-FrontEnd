@@ -6,5 +6,6 @@ export class User{
   public roleId : number;
   public role : RoleType;
   public userName : string;
+  public author:string;
   public passwordHash : string;
 }

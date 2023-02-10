@@ -33,6 +33,6 @@ export class Alcohol{
   public visible:boolean;
   //UserId:number;
   public user:User
-  public publishDate:Date |undefined;
-  public updatedDate:Date | undefined;
+  public publishDate:Date;
+  public updatedDate:Date;
 }
