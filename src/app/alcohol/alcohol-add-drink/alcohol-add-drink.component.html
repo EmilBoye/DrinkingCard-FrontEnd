@@ -1,1 +1,22 @@
-<div class="container" *ngIf="alcoholPost"></div>
+<p>alcohol-add-drink works!</p>
+<div class="bg-gray-300">
+<div class="container" *ngIf="drink">
+  <br>
+  <br>
+  <h1>Opret ny Drink</h1>
+  <br>
+  <br>
+  <form #drinkForm="ngForm">
+    <div class="mb-3">
+      <label class="form-label">Titel</label>
+      <input type="text" class="form-input" name="title" [(ngModel)]="drink.title">
+    </div>
+    <div class="mb-3">
+      <label class="form-label"></label>
+    </div>
+
+
+    <button (click)="onSubmit()">dada</button>
+  </form>
+</div>
+</div>

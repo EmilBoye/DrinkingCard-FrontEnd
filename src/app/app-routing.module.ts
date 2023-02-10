@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AlcoholAddDrinkComponent } from './alcohol/alcohol-add-drink/alcohol-add-drink.component';
 import { AlcoholComponent } from './alcohol/alcohol.component';
 import { AppComponent } from './app.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
@@ -16,6 +17,9 @@ const routes: Routes = [
     path: 'alko', component: AlcoholComponent
   },
   {
+    path: 'alko/add', component: AlcoholAddDrinkComponent
+  },
+  {
     path: 'alkofri', component: NonalcoholComponent
   },
   {
@@ -29,4 +33,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [HeaderComponent, AlcoholComponent, NonalcoholComponent]
+export const routingComponents = [HeaderComponent, AlcoholComponent, NonalcoholComponent, AlcoholAddDrinkComponent]

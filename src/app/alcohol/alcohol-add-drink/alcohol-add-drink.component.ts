@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Alcohol } from 'src/app/models/Alcohol-model';
-import { HttpService } from 'src/app/service/httpservice.service';
+import { Alcohol, AlcoholType } from 'src/app/models/Alcohol-model';
+import { User } from 'src/app/models/User-model';
 
 @Component({
   selector: 'app-alcohol-add-drink',
@@ -9,22 +8,26 @@ import { HttpService } from 'src/app/service/httpservice.service';
   styleUrls: ['./alcohol-add-drink.component.css']
 })
 export class AlcoholAddDrinkComponent implements OnInit {
-
-  alcoholPost: Alcohol | undefined;
-  constructor(private alcoholService: HttpService, private route: ActivatedRoute) { }
-
+  alcoholPost: Alcohol[];
+  constructor() { }
+  drink: Alcohol = {
+    alcoId: 0,
+    author: '',
+    title: '',
+    description: '',
+    featuredImageUrl: '',
+    strength: '',
+    ingredients: '',
+    alcoholType: AlcoholType.Vodka,
+    visible: false,
+    user: new User,
+    publishDate: undefined,
+    updatedDate: undefined
+  }
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params=>{
-      const id = params.get('id');
-
-      if(id) {
-        this.alcoholService.getDrink().subscribe(response => {
-          this.alcoholPost;
-          console.log(response);
-
-        });
-      }
-    })
   }
 
+  onSubmit():void{
+
+  }
 }

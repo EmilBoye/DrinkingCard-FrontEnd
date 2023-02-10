@@ -28,5 +28,4 @@ export class FrontpageComponent implements OnInit {
 
     })
   }
-
 }
