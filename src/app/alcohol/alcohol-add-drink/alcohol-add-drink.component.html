@@ -6,7 +6,11 @@
   <h1 class="text-3xl text-center font-mono">Opret ny drink</h1>
   <br>
   <br>
-  <form #drinkForm="ngForm">
+  <form #drinkForm="ngForm" class="justify-center">
+    <div class="mb-3">
+      <label class="form-label">Oprettet af</label>
+      <input type="text" class="form-input" name="author" [(ngModel)]="drink.user.author">
+    </div>
     <div class="mb-3">
       <label class="form-label">Titel</label>
       <input type="text" class="form-input" name="title" [(ngModel)]="drink.title">
@@ -16,9 +20,12 @@
       <textarea name="description" class="form-control" [(ngModel)]="drink.description"></textarea>
     </div>
     <div class="mb-3">
-      <label class="form-label">Oprettet af</label>
-      <input type="text" class="form-input" name="author" [(ngModel)]="drink.user.author">
+      <input type="file" name="featuredimageurl" [(ngModel)]="drink.featuredImageUrl">
     </div>
+    <!-- <div class="mb-3 justify-center">
+      <label class="form-label">Type af alkohol</label>
+      <input type="text" class="form-input" name="alcoholtype" [(ngModel)]="drink.alcoholType">
+    </div> -->
     <button class="bg-blue-500 hover:bg-blue-700
     text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" (click)="onSubmit()">Opret</button>
   </form>

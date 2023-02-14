@@ -12,18 +12,20 @@ import { AlcoholAddDrinkComponent } from './alcohol-add-drink/alcohol-add-drink.
 })
 export class AlcoholComponent implements OnInit {
 
+  drinks: Alcohol[] = [];
   constructor(private alcoholService:HttpService, private router:Router) { }
 
 
   ngOnInit(): void {
     this.alcoholService.getDrink().subscribe(a => {
+      this.drinks = a;
       console.log("Alkohol",a);
 
     });
   }
 
   createDrink():void{
-    this.router.navigate(['alko/add']);
+    this.router.navigate(['alkohol/tilføj']);
   }
   onSubmit():void{
 

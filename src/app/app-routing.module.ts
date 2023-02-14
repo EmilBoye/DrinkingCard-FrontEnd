@@ -14,13 +14,13 @@ const routes: Routes = [
     path: 'hjem', component: FrontpageComponent,
   },
   {
-    path: 'alko', component: AlcoholComponent
+    path: 'alkohol', component: AlcoholComponent
   },
   {
-    path: 'alko/add', component: AlcoholAddDrinkComponent
+    path: 'alkohol/tilføj', component: AlcoholAddDrinkComponent
   },
   {
-    path: 'alkofri', component: NonalcoholComponent
+    path: 'alkoholfri', component: NonalcoholComponent
   },
   {
     path: 'login', component: LoginComponent

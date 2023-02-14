@@ -29,6 +29,9 @@ export class AlcoholAddDrinkComponent implements OnInit {
   }
 
   onSubmit():void{
+    if(this.drink.alcoholType){
+      AlcoholType.Vodka.toString();
+    }
     this.alcoholService.postDrink(this.drink).subscribe(a => {
       console.log(this.drink);
 
