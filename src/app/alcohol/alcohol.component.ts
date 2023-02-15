@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Alcohol, AlcoholType } from '../models/Alcohol-model';
 import { User } from '../models/User-model';
+import { HttpService } from '../service/httpservice.service';
+import { Router, RouterModule, Routes } from '@angular/router';
+import { AlcoholAddDrinkComponent } from './alcohol-add-drink/alcohol-add-drink.component';
 
 @Component({
   selector: 'app-alcohol',
@@ -9,22 +12,25 @@ import { User } from '../models/User-model';
 })
 export class AlcoholComponent implements OnInit {
 
-  constructor() { }
+  drinks: Alcohol[] = [];
+  constructor(private alcoholService:HttpService, private router:Router) { }
 
-  alcoholPost: Alcohol =
-  {
-    alcoId: 0,
-    author: '',
-    title: '',
-    description: '',
-    featuredImageUrl: '',
-    strength: '',
-    ingredients: '',
-    alcoholType: AlcoholType.ALÉ,
-    visible: true,
-    user: new User
-  }
+
   ngOnInit(): void {
+    this.alcoholService.getAllDrinks().subscribe(a => {
+      this.drinks = a;
+      console.log("Alkohol",a);
+
+    });
   }
 
+  createDrink():void{
+    this.router.navigate(['alkohol/tilføj']);
+  }
+  editDrink(): void {
+    this.router.navigate(['alkohol/opdater'])
+  }
+  onSubmit():void{
+
+  }
 }

@@ -1,13 +1,13 @@
 <header>
   <nav class="overflow-hidden bg-gray-500 py-10 ">
-    <div class="flex justify-between items-center m-0 grid-cols-3">
+    <div class="flex justify-between items-center m-0 grid-cols-3 gap-3">
 
       <div class="flex justify-center items-center m-0 float-left text-center font-mono no-underline px-3 space-x-6 text-xl text-white">
       <!-- <a class="navbar-brand" routerLink="/">Test</a> -->
       <a routerLink="/hjem"><img src="../../assets/photo/image.png" alt="Logo" class="h-8"></a>
       <a routerLink="/hjem" routerLinkActive="active">Hjem</a>
-      <a routerLink="/alko" routerLinkActive="active">Alkohol</a>
-      <a routerLink="/alkofri" routerLinkActive="active">Alkohol Fri</a>
+      <a routerLink="/alkohol" routerLinkActive="active">Alkohol</a>
+      <a routerLink="/alkoholfri" routerLinkActive="active">Alkohol Fri</a>
       </div>
 
       <div class="flex grid-cols-2 m-0 px-10 space-x-4">
@@ -67,6 +67,7 @@
             <label class="block text-gray-700 font-medium mb-2" for="username">Brugernavn</label>
             <input class="border border-gray-400 p-2 rounded-lg w-full"
             type="text"
+            [(ngModel)]="nyBruger.userName"
             formControlName="userName"
             placeholder="Brugernavn"/>
             <div class="text-red-500">
@@ -77,14 +78,14 @@
                 <label class="block text-gray-700 font-medium mb-2" for="passwordHash">
                   Adgangskode
                 </label>
-                <input
-                class="border border-gray-400 p-2 rounded-lg w-full"
+                <input class="border border-gray-400 p-2 rounded-lg w-full"
                 type="password"
+                [(ngModel)]="nyBruger.passwordHash"
                 formControlName="passwordHash"
                 placeholder="Adgangskode"/>
               </div>
               <div class="flex justify-center space-x-4 grid-cols-2">
-                <button class="bg-blue-500 text-white p-2 rounded-lg" (click)="onCreate()" [disabled]="createUserForm.invalid">Opret</button>
+                <button class="bg-blue-500 text-white p-2 rounded-lg" (click)="onSubmit()" [disabled]="createUserForm.invalid">Opret</button>
                 <button class="text-gray-500 text-sm mt-4 float-right" (click)="showCreateModal = false">ESC</button>
               </div>
             </div>

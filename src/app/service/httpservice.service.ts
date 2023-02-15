@@ -15,14 +15,14 @@ export class HttpService {
   apiBaseUrl = environment.apiBaseUrl;
 
   // User CRUD.
-  getUser(): Observable<User[]>{
+  getAllUsers(): Observable<User[]>{
     return this.http.get<User[]>(this.apiBaseUrl + '/api/User');
   }
   getUserById(id: number): Observable<User[]>{
     return this.http.get<User[]>(this.apiBaseUrl + '/api/User/' + id);
   }
-  postUser(userinfo:User): Observable<User[]>{
-    return this.http.post<User[]>(this.apiBaseUrl + '/api/User/', userinfo);
+  postUser(userinfo:any): Observable<User>{
+    return this.http.post<User>(this.apiBaseUrl + '/api/User/', userinfo);
   }
   updateUser(id:number, updateUser: User): Observable<User[]>{
     return this.http.put<User[]>(this.apiBaseUrl + '/api/User/' + id, updateUser);
@@ -33,10 +33,10 @@ export class HttpService {
 
 
   //Alcohol CRUD
-  getAlcohol():Observable<Alcohol[]>{
+  getAllDrinks():Observable<Alcohol[]>{
     return this.http.get<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/');
   }
-  getAlcoholById(id: number): Observable<Alcohol[]>{
+  getDrinkById(id: number): Observable<Alcohol[]>{
     return this.http.get<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id);
   }
   postDrink(alcoinfo:Alcohol): Observable<Alcohol[]>{

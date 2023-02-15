@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Role, RoleType } from '../models/Role-model';
 import { User } from 'src/app/models/User-model';
 import { HttpService } from '../service/httpservice.service';
@@ -11,34 +11,17 @@ import { HttpService } from '../service/httpservice.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  createUserForm: any = new FormGroup({});
   users: User[] = [];
   confirmPass: any;
-  userObject: User = {userId: 0, roleId: 0, role:RoleType.User, userName: "", passwordHash: ""}
+  @Input() nyBruger = {roleId: 0, role:RoleType.User, userName: "", passwordHash: ""}
   userChecked: boolean = true;
   showCreateModal = false;
   showLoginModal = false;
   userId: number[] = [];
 
+  constructor(private service:HttpService, private formBuilder:FormBuilder) { }
 
-  createUser: User =
-    {
-      userName: '',
-      passwordHash: '',
-      userId: 0,
-      roleId: 0,
-      role: RoleType.User
-    };
-  constructor(private service:HttpService) { }
-
-  createUserForm = new FormGroup({
-    userId: new FormControl(),
-    roleId: new FormControl(),
-    role: new FormControl(RoleType.User),
-    userName: new FormControl('', [Validators.required]),
-    passwordHash: new FormControl('', [Validators.required]),
-
-
-  });
 
   loginForm = new FormGroup({
     userId: new FormControl(0),
@@ -51,7 +34,13 @@ export class HeaderComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    // this.service.getUser().subscribe(u=>this.users = u);
+    this.createUserForm = this.formBuilder.group({
+        roleId: new FormControl(this.nyBruger.roleId),
+        role: new FormControl(this.nyBruger.role),
+        userName: new FormControl('', [Validators.required]),
+        passwordHash: new FormControl('', [Validators.required]),
+    });
+    this.service.getAllUsers().subscribe(u=>this.users = u);
 
     // var placeholder = localStorage.getItem('User');
     // this.userId = placeholder == null ? 0 : parseInt(placeholder);
@@ -65,37 +54,34 @@ export class HeaderComponent implements OnInit {
   }
   onCreate():void{
     this.showCreateModal = true;
-    console.warn(this.createUser);
-    this.service.getUser().subscribe(response => {console.log(response);
-    })
-    this.service.postUser(this.createUser).subscribe(response=>{console.log(response);
-    })
+    console.warn("createUserForm",this.createUserForm.value);
+    // this.service.getUser().subscribe(response => {console.log(response);
+    // })
+
   }
   onLogin():void{
     this.showLoginModal = true;
     //this.userObject.userName = this.loginForm.value.userName;
-    if(this.confirmPass.value == this.loginForm.value.passwordHash){
-      if(this.loginForm.value.passwordHash?.length)
-      {
-
-      }
-    }
-    this.service.getUser().subscribe(response=>{
+    this.service.getAllUsers().subscribe(response=>{
       if(response){
         console.log(response);
         this.users = response;
       }
     })
+    // if(this.confirmPass.value == this.loginForm.value.passwordHash){
+    //   if(this.loginForm.value.passwordHash?.length)
+    //   {
+
+    //   }
+    // }
 
 
   }
-  // onSubmit():void{
-  //   console.log("Knap virker");
-  //   this.service.getUser().subscribe(respone =>{
-  //     console.log(respone);
-  //     ;
-  //   })
-  // }
+  onSubmit():void{
+    this.service.postUser(this.nyBruger).subscribe(response=>{console.log(response);
+      console.log("Ny bruger",this.nyBruger);
+    });
+  }
   /*const nameToPost = {
       userName:'Emil',
       passwordHash:'123456789'

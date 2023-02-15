@@ -10,23 +10,16 @@ import { HttpService } from '../service/httpservice.service';
 })
 export class FrontpageComponent implements OnInit {
 
-  alcoholDrinks: Alcohol[] = [];
+  drinks: Alcohol[] = [];
   users: User[] = [];
 
   constructor(private alcoholService:HttpService) { }
 
   ngOnInit(): void {
-    this.alcoholService.getAlcohol().subscribe(data => {
+    this.alcoholService.getAllDrinks().subscribe(data => {
 
-      this.alcoholDrinks = data;
+      this.drinks = data;
       console.log(data);
-    })
-
-    this.alcoholService.getUser().subscribe(data=> {
-      this.users = data;
-      console.log(data);
-
     })
   }
-
 }
