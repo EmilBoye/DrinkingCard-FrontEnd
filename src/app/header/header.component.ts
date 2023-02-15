@@ -35,12 +35,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.createUserForm = this.formBuilder.group({
-        roleId: new FormControl(''),
-        role: new FormControl(''),
+        roleId: new FormControl(this.nyBruger.roleId),
+        role: new FormControl(this.nyBruger.role),
         userName: new FormControl('', [Validators.required]),
         passwordHash: new FormControl('', [Validators.required]),
     });
-    // this.service.getUser().subscribe(u=>this.users = u);
+    this.service.getAllUsers().subscribe(u=>this.users = u);
 
     // var placeholder = localStorage.getItem('User');
     // this.userId = placeholder == null ? 0 : parseInt(placeholder);
@@ -62,18 +62,18 @@ export class HeaderComponent implements OnInit {
   onLogin():void{
     this.showLoginModal = true;
     //this.userObject.userName = this.loginForm.value.userName;
-    if(this.confirmPass.value == this.loginForm.value.passwordHash){
-      if(this.loginForm.value.passwordHash?.length)
-      {
-
-      }
-    }
-    this.service.getUser().subscribe(response=>{
+    this.service.getAllUsers().subscribe(response=>{
       if(response){
         console.log(response);
         this.users = response;
       }
     })
+    // if(this.confirmPass.value == this.loginForm.value.passwordHash){
+    //   if(this.loginForm.value.passwordHash?.length)
+    //   {
+
+    //   }
+    // }
 
 
   }

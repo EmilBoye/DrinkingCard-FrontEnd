@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { LoginComponent } from './login/login.component';
 import { AlcoholAddDrinkComponent } from './alcohol/alcohol-add-drink/alcohol-add-drink.component';
+import { AlcoholUpdateDrinkComponent } from './alcohol/alcohol-update-drink/alcohol-update-drink.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AlcoholAddDrinkComponent } from './alcohol/alcohol-add-drink/alcohol-ad
     FrontpageComponent,
     LoginComponent,
     AlcoholAddDrinkComponent,
+    AlcoholUpdateDrinkComponent,
   ],
   imports: [
     BrowserModule,

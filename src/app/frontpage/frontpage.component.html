@@ -11,9 +11,9 @@
     aria-current="true"
     aria-label="Slide 1">
     </button> -->
-    <div *ngFor="let drink of alcoholDrinks">
+    <div *ngFor="let drink of drinks">
       <!-- <h1>ID: {{drink.alcoId}}</h1> -->
-      <h1>Udgivet af: {{drink.author}}</h1>
+      <h1>Udgivet af: {{drink.user.author}}</h1>
       <h1>Titel: {{drink.title}}</h1>
       <h1>Styrke: {{drink.strength}}</h1>
       <h1>Beskrivelse: {{drink.description}}</h1>
@@ -26,12 +26,12 @@
 
       <p>Her har jeg prøvet med User klassen</p>
 
-      <div *ngFor="let lars of users">
-        <h1>user: {{lars.userName}}</h1>
-        <h1>password: {{lars.passwordHash}}</h1>
-        <h1>userid {{lars.userId}}</h1>
-        <h1>roleId {{lars.roleId}}</h1>
-        <h1>role {{lars.role}}</h1>
+      <div *ngFor="let user of users">
+        <h1>user: {{user.userName}}</h1>
+        <h1>password: {{user.passwordHash}}</h1>
+        <h1>userid {{user.userId}}</h1>
+        <h1>roleId {{user.roleId}}</h1>
+        <h1>role {{user.role}}</h1>
       </div>
 <!-- <div *ngFor="let drinks of alcoholDrinks">
   <h1>{{drinks}}</h1>

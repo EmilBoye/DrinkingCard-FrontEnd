@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AlcoholAddDrinkComponent } from './alcohol/alcohol-add-drink/alcohol-add-drink.component';
+import { AlcoholUpdateDrinkComponent } from './alcohol/alcohol-update-drink/alcohol-update-drink.component';
 import { AlcoholComponent } from './alcohol/alcohol.component';
 import { AppComponent } from './app.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
@@ -18,6 +19,9 @@ const routes: Routes = [
   },
   {
     path: 'alkohol/tilføj', component: AlcoholAddDrinkComponent
+  },
+  {
+    path: 'alkohol/opdater' , component:AlcoholUpdateDrinkComponent
   },
   {
     path: 'alkoholfri', component: NonalcoholComponent

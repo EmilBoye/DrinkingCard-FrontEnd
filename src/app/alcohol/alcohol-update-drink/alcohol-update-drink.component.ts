@@ -4,14 +4,15 @@ import { User } from 'src/app/models/User-model';
 import { HttpService } from 'src/app/service/httpservice.service';
 
 @Component({
-  selector: 'app-alcohol-add-drink',
-  templateUrl: './alcohol-add-drink.component.html',
-  styleUrls: ['./alcohol-add-drink.component.css']
+  selector: 'app-alcohol-update-drink',
+  templateUrl: './alcohol-update-drink.component.html',
+  styleUrls: ['./alcohol-update-drink.component.css']
 })
-export class AlcoholAddDrinkComponent implements OnInit {
-  alcoholPost: Alcohol[] = [];
+export class AlcoholUpdateDrinkComponent implements OnInit {
+
+  alcoholUpdate: Alcohol[] = [];
   constructor(private alcoholService:HttpService) { }
-  drink: Alcohol = {
+  Test: Alcohol = {
     alcoId: 0,
     author: '',
     title: '',
@@ -25,15 +26,14 @@ export class AlcoholAddDrinkComponent implements OnInit {
     publishDate: new Date(),
     updatedDate: new Date()
   }
+
   ngOnInit(): void {
   }
+  onSubmit(): void {
+    this.alcoholService.updateDrink(this.Test?.alcoId, this.Test).subscribe(a => {
+      console.log(a);
 
-  onSubmit():void{
-    if(this.drink.alcoholType){
-      AlcoholType.Vodka.toString();
-    }
-    this.alcoholService.postDrink(this.drink).subscribe(a => {
-      console.log(this.drink);
+      this.alcoholUpdate = a;
     });
   }
 }

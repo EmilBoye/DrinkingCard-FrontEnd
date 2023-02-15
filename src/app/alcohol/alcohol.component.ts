@@ -17,7 +17,7 @@ export class AlcoholComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.alcoholService.getDrink().subscribe(a => {
+    this.alcoholService.getAllDrinks().subscribe(a => {
       this.drinks = a;
       console.log("Alkohol",a);
 
@@ -26,6 +26,9 @@ export class AlcoholComponent implements OnInit {
 
   createDrink():void{
     this.router.navigate(['alkohol/tilføj']);
+  }
+  editDrink(): void {
+    this.router.navigate(['alkohol/opdater'])
   }
   onSubmit():void{
 
