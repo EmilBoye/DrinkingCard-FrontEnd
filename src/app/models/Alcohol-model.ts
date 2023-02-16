@@ -32,7 +32,6 @@ export class Alcohol{
   public alcoholType:AlcoholType;
   public visible:boolean;
   //UserId:number;
-  public user:User
   public publishDate:Date;
   public updatedDate:Date;
 }

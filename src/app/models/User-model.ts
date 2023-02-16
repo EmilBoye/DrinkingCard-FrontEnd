@@ -1,4 +1,5 @@
 import { RouterLink } from "@angular/router";
+import { Alcohol } from "./Alcohol-model";
 import { Role, RoleType } from "./Role-model";
 
 export class User{
@@ -6,6 +7,6 @@ export class User{
   public roleId : number;
   public role : RoleType;
   public userName : string;
-  public author:string;
+  public author : Alcohol;
   public passwordHash : string;
 }

@@ -21,7 +21,6 @@ export class AlcoholAddDrinkComponent implements OnInit {
     ingredients: '',
     alcoholType: AlcoholType.Vodka,
     visible: false,
-    user: new User,
     publishDate: new Date(),
     updatedDate: new Date()
   }

@@ -11,7 +11,6 @@ import { AlcoholAddDrinkComponent } from './alcohol-add-drink/alcohol-add-drink.
   styleUrls: ['./alcohol.component.css']
 })
 export class AlcoholComponent implements OnInit {
-
   drinks: Alcohol[] = [];
   constructor(private alcoholService:HttpService, private router:Router) { }
 
@@ -29,6 +28,13 @@ export class AlcoholComponent implements OnInit {
   }
   editDrink(): void {
     this.router.navigate(['alkohol/opdater'])
+  }
+  deleteDrink(drinkId:number){
+    this.alcoholService.deleteDrink(drinkId).subscribe(a=> {
+      console.log(a);
+
+
+    });
   }
   onSubmit():void{
 

@@ -2,9 +2,14 @@
   <tbody>
     <div class="bg-gray-300 py-7">
       <p class="text-center text-2xl">Cards over Alkoholiske Drinks</p>
+      <form class="float-right m-7">
+        <button type="button" (click)="createDrink()" class="bg-blue-500 hover:bg-blue-700
+        text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center">Opret Drink</button>
+        <button type="button" (click)="deleteDrink(0)">Delete Genre</button>
+      </form>
       <div class="grid grid-cols-4 gap-4">
-        <div class="rounded overflow-hidden shadow-lg  px-6 py-4 bg-white shadow-slate-700 ml-10">
-          <img src="../../assets/photo/mojito-cocktail.png" alt="Mojito" class="h-13">
+        <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 border-solid ml-10">
+          <img src="../../assets/photo/mojito-cocktail.png" alt="Mojito" class="h-28">
           <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">  Mojito</div>
             <p class="text-gray-700 text-base">
@@ -52,7 +57,7 @@
         <div class="font-bold text-xl mb-2"> {{ test.title }}</div>
         <p class="text-gray-700 text-base">
           <li>{{test.author}}</li>
-          <li></li>
+          <li>{{test.description}}</li>
           <li></li>
           <li></li>
           <li></li>
@@ -63,10 +68,6 @@
       </div>
     </div>
   </div>
-    <form class="ml-40">
-      <button type="button" (click)="createDrink()" class="bg-blue-500 hover:bg-blue-700
-      text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center">Opret Drink</button>
-    </form>
 </div>
 </div>
 </tbody>

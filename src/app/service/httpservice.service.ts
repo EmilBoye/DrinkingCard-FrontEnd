@@ -45,7 +45,7 @@ export class HttpService {
   updateDrink(id:number, updateDrink: Alcohol): Observable<Alcohol[]>{
     return this.http.put<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id, updateDrink);
   }
-  deleteDrink(id:number): Observable<Alcohol[]>{
-    return this.http.delete<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id);
+  deleteDrink(id:number): Observable<Alcohol>{
+    return this.http.delete<Alcohol>(this.apiBaseUrl + '/api/Alcohol/' + id);
   }
 }
