@@ -1,30 +1,30 @@
 <p>alcohol-update-drink works!</p>
 <div class="bg-gray-300 justify-center">
-<div class="" *ngIf="Test">
+<div class="" *ngIf="updateDrink">
   <br>
   <br>
   <h1 class="text-3xl text-center font-mono">Opdater drink</h1>
   <br>
   <br>
   <form #drinkForm="ngForm" class="justify-center">
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label class="form-label">Id</label>
-      <input type="text" class="form-control" name="id" [(ngModel)]="Test.alcoId">
-    </div>
+      <input type="text" class="form-control" name="id" [(ngModel)]="updateDrink.alcoId">
+    </div> -->
     <div class="mb-3">
       <label class="form-label">Oprettet af</label>
-      <input type="text" class="form-input" name="author" [(ngModel)]="Test.author">
+      <input type="text" class="form-input" name="author" [(ngModel)]="updateDrink.author">
     </div>
     <div class="mb-3">
       <label class="form-label">Titel</label>
-      <input type="text" class="form-input" name="title" [(ngModel)]="Test.title">
+      <input type="text" class="form-input" name="title" [(ngModel)]="updateDrink.title">
     </div>
     <div class="mb-3">
       <label class="form-label">Beskrivelse</label>
-      <textarea name="description" class="form-control" [(ngModel)]="Test.description"></textarea>
+      <textarea name="description" class="form-control" [(ngModel)]="updateDrink.description"></textarea>
     </div>
     <div class="mb-3">
-      <input type="file" name="featuredimageurl" [(ngModel)]="Test.featuredImageUrl">
+      <input type="file" name="featuredimageurl" [(ngModel)]="updateDrink.featuredImageUrl">
     </div>
     <!-- <div class="mb-3 justify-center">
       <label class="form-label">Type af alkohol</label>

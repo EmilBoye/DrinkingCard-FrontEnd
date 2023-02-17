@@ -6,7 +6,6 @@ import { AlcoholComponent } from './alcohol/alcohol.component';
 import { AppComponent } from './app.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './login/login.component';
 import { NonalcoholComponent } from './nonalcohol/nonalcohol.component';
 
 const routes: Routes = [
@@ -21,14 +20,11 @@ const routes: Routes = [
     path: 'alkohol/tilføj', component: AlcoholAddDrinkComponent
   },
   {
-    path: 'alkohol/opdater' , component:AlcoholUpdateDrinkComponent
+    path: 'alkohol/opdater/:id' , component:AlcoholUpdateDrinkComponent
   },
   {
     path: 'alkoholfri', component: NonalcoholComponent
   },
-  {
-    path: 'login', component: LoginComponent
-  }
 ];
 
 @NgModule({
@@ -37,4 +33,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [HeaderComponent, AlcoholComponent, NonalcoholComponent, AlcoholAddDrinkComponent]
+export const routingComponents = [HeaderComponent, AlcoholComponent, NonalcoholComponent, AlcoholAddDrinkComponent,]

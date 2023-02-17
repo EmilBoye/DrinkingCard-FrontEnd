@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   createUserForm: any = new FormGroup({});
   users: User[] = [];
   confirmPass: any;
-  @Input() nyBruger = {roleId: 0, role:RoleType.User, userName: "", passwordHash: ""}
+  @Input() nyBruger = {userId: 0, roleId: 0, role:RoleType.User, userName: "", passwordHash: ""}
   userChecked: boolean = true;
   showCreateModal = false;
   showLoginModal = false;
@@ -35,8 +35,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.createUserForm = this.formBuilder.group({
-        roleId: new FormControl(this.nyBruger.roleId),
-        role: new FormControl(this.nyBruger.role),
         userName: new FormControl('', [Validators.required]),
         passwordHash: new FormControl('', [Validators.required]),
     });
@@ -55,6 +53,7 @@ export class HeaderComponent implements OnInit {
   onCreate():void{
     this.showCreateModal = true;
     console.warn("createUserForm",this.createUserForm.value);
+
     // this.service.getUser().subscribe(response => {console.log(response);
     // })
 
@@ -78,9 +77,22 @@ export class HeaderComponent implements OnInit {
 
   }
   onSubmit():void{
-    this.service.postUser(this.nyBruger).subscribe(response=>{console.log(response);
-      console.log("Ny bruger",this.nyBruger);
-    });
+    this.confirmPass = document.getElementById("confirmAccPass") as HTMLInputElement;
+    if(this.confirmPass.value == this.createUserForm.value.passwordHash){
+      if(this.createUserForm.value.passwordHash?.length >= 8 && this.createUserForm.value.userName){
+        alert("Brugeren er oprettet");
+
+        this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
+      }
+      else{
+        if(this.createUserForm.value.userName.length < 1){
+          alert("Du skal skrive dit brugernavn korrekt. Minimum 3 karakter");
+        }
+        else{
+          alert("Adgangskoden skal være minimum 8 karakter langt.");
+        }
+      }
+    }
   }
   /*const nameToPost = {
       userName:'Emil',
