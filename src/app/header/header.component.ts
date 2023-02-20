@@ -60,13 +60,10 @@ export class HeaderComponent implements OnInit {
   }
   onLogin():void{
     this.showLoginModal = true;
-    //this.userObject.userName = this.loginForm.value.userName;
-    this.service.getAllUsers().subscribe(response=>{
-      if(response){
-        console.log(response);
-        this.users = response;
-      }
-    })
+
+    // this.nyBruger.userName = this.loginForm.value.userName;
+
+
     // if(this.confirmPass.value == this.loginForm.value.passwordHash){
     //   if(this.loginForm.value.passwordHash?.length)
     //   {
@@ -82,7 +79,7 @@ export class HeaderComponent implements OnInit {
       if(this.createUserForm.value.passwordHash?.length >= 8 && this.createUserForm.value.userName){
         alert("Brugeren er oprettet");
 
-        this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
+        this.service.postUser(this.nyBruger).subscribe(user => console.log(user));
       }
       else{
         if(this.createUserForm.value.userName.length < 1){
@@ -93,6 +90,31 @@ export class HeaderComponent implements OnInit {
         }
       }
     }
+  }
+  onSubmitLogin(): void {
+    var userFilter = this.users.filter(u => u.userName == this.loginForm.value.userName && u.passwordHash == this.loginForm.value.passwordHash);
+
+    if(userFilter.length == 0){
+      alert("Forkert brugernavn eller adgangskode");
+      this.userChecked = false;
+    }
+
+    else if(userFilter.length == 1){
+      this.userChecked = true;
+      this.service.postUser(this.nyBruger).subscribe();
+      this.loginForm.reset();
+      window.localStorage.setItem('User', userFilter[0].userId.toString());
+      window.location.reload();
+      alert("Du er nu logget ind!");
+      this.userChecked = false;
+    }
+    //this.userObject.userName = this.loginForm.value.userName;
+    this.service.getAllUsers().subscribe(response=>{
+      if(response){
+        console.log(response);
+        this.users = response;
+      }
+    })
   }
   /*const nameToPost = {
       userName:'Emil',
