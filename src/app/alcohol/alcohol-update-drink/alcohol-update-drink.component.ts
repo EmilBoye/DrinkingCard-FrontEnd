@@ -38,7 +38,7 @@ export class AlcoholUpdateDrinkComponent implements OnInit {
   }
   onSubmit(): void {
     console.log(this.updateDrink.title);
-    if(this.updateDrink.title.length >= 5){
+    if(this.updateDrink.title.length >= 5 && this.updateDrink.author){
 
       this.alcoholService.updateDrink(this.updateDrink?.alcoId, this.updateDrink).subscribe(data => {
         console.log(data);
