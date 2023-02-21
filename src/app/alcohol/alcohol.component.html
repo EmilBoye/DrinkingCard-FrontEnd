@@ -1,26 +1,24 @@
-<table>
-  <tbody>
-    <div class="bg-gray-300 py-7">
-      <p class="text-center text-2xl py-3">Cards over Alkoholiske Drinks</p>
-      <form class="float-right m-7">
-        <button type="button" (click)="createDrink()" class="bg-blue-500 hover:bg-blue-700
-        text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center">Opret Drink</button>
-      </form>
-      <div class="grid grid-cols-4 gap-4">
-        <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 border-solid ml-10">
-          <img src="../../assets/photo/mojito-cocktail.png" alt="Mojito" class="h-28">
-          <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">  Mojito</div>
-            <p class="text-gray-700 text-base">
-              <li> 5 cl lys rom.</li>
-              <li>1 tsk sukker.</li>
-              <li>1 håndfuld frisk mynte.</li>
-              <li>1 lime, skåret i både.</li>
-              <li>2 dl isterninger der er knuste.</li>
-              <li>Danskvand til at toppe med.</li>
-            </p>
-          </div>
-        </div>
+<div class="bg-gray-300 py-7">
+  <p class="text-center text-2xl py-3">Cards over Alkoholiske Drinks</p>
+  <form class="float-right m-7">
+    <button type="button" (click)="createDrink()" class="bg-blue-500 hover:bg-blue-700
+      text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center">Opret Drink</button>
+  </form>
+  <div class="grid grid-cols-4 gap-4 mx-auto">
+    <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 border-solid ml-10">
+      <img src="../../assets/photo/mojito-cocktail.png" alt="Mojito" class="h-28">
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">  Mojito</div>
+        <p class="text-gray-700 text-base">
+          <li> 5 cl lys rom.</li>
+          <li>1 tsk sukker.</li>
+          <li>1 håndfuld frisk mynte.</li>
+          <li>1 lime, skåret i både.</li>
+          <li>2 dl isterninger der er knuste.</li>
+          <li>Danskvand til at toppe med.</li>
+        </p>
+      </div>
+    </div>
     <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 ml-8">
       <img src="../../assets/photo/filur-cocktailcompany.png" alt="Mojito" class="h-28">
       <div class="px-6 py-4">
@@ -60,13 +58,13 @@
         <p class="text-gray-700 text-base">
           <li>{{drink.description}}</li>
           <li>{{drink.ingredients}}</li>
-          <li>{{drink}}</li>
           <li></li>
           <li></li>
           <li></li>
-          <button type="button" (click)="editDrink(drink.alcoId)" class="bg-blue-500 hover:bg-blue-700
+          <li></li>
+          <button type="button" (click)="editDrink(drink.id)" class="bg-blue-500 hover:bg-blue-700
         text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Rediger Drink</button>
-          <button type="button" (click)="deleteDrink(drink.alcoId)" class="bg-red-400 hover:bg-red-700
+          <button type="button" (click)="deleteDrink(drink.id)" class="bg-red-400 hover:bg-red-700
         text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Slet Drink</button>
         </p>
       </div>
@@ -74,5 +72,3 @@
   </div>
 </div>
 </div>
-</tbody>
-</table>

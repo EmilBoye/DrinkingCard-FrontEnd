@@ -103,7 +103,7 @@ export class HeaderComponent implements OnInit {
       this.userChecked = true;
       this.service.postUser(this.nyBruger).subscribe();
       this.loginForm.reset();
-      window.localStorage.setItem('User', userFilter[0].userId.toString());
+      window.localStorage.setItem('User', userFilter[0].id.toString());
       window.location.reload();
       alert("Du er nu logget ind!");
       this.userChecked = false;
