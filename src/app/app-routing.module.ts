@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { NonalcoholComponent } from './nonalcohol/nonalcohol.component';
 
 const routes: Routes = [
-  { path: '', pathMatch:'full', redirectTo:'/'},
+  { path: '', pathMatch:'full', redirectTo:'hjem'},
   {
     path: 'hjem', component: FrontpageComponent,
   },
