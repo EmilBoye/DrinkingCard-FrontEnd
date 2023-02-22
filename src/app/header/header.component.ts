@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit {
     roleId: new FormControl(0),
     userName: new FormControl('', [Validators.required]),
     passwordHash: new FormControl('', [Validators.required]),
-
     roleType: new FormControl(RoleType.User),
 
   });
@@ -36,50 +35,27 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.createUserForm = this.formBuilder.group({
         userName: new FormControl('', [Validators.required]),
+        role: new FormControl(RoleType.User),
         passwordHash: new FormControl('', [Validators.required]),
+        confirmPass: new FormControl('')
     });
     this.service.getAllUsers().subscribe(u=>this.users = u);
 
-    // var placeholder = localStorage.getItem('User');
-    // this.userId = placeholder == null ? 0 : parseInt(placeholder);
 
-    // if(this.userId){
-
-    // }
-    // else{
-
-    // }
   }
   onCreate():void{
     this.showCreateModal = true;
     console.warn("createUserForm",this.createUserForm.value);
-
-    // this.service.getUser().subscribe(response => {console.log(response);
-    // })
-
   }
   onLogin():void{
     this.showLoginModal = true;
-
-    // this.nyBruger.userName = this.loginForm.value.userName;
-
-
-    // if(this.confirmPass.value == this.loginForm.value.passwordHash){
-    //   if(this.loginForm.value.passwordHash?.length)
-    //   {
-
-    //   }
-    // }
-
-
   }
-  onSubmit():void{
-    this.confirmPass = document.getElementById("confirmAccPass") as HTMLInputElement;
-    if(this.confirmPass.value == this.createUserForm.value.passwordHash){
+  onSubmitCreate():void{
+    this.confirmPass = this.createUserForm.get('confirmPass');
       if(this.createUserForm.value.passwordHash?.length >= 8 && this.createUserForm.value.userName){
         alert("Brugeren er oprettet");
 
-        this.service.postUser(this.nyBruger).subscribe(user => console.log(user));
+        this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
       }
       else{
         if(this.createUserForm.value.userName.length < 1){
@@ -89,7 +65,6 @@ export class HeaderComponent implements OnInit {
           alert("Adgangskoden skal være minimum 8 karakter langt.");
         }
       }
-    }
   }
   onSubmitLogin(): void {
     var userFilter = this.users.filter(u => u.userName == this.loginForm.value.userName && u.passwordHash == this.loginForm.value.passwordHash);

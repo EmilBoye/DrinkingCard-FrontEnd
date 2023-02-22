@@ -39,7 +39,7 @@ export class HttpService {
   getDrinkById(id: number): Observable<Alcohol[]>{
     return this.http.get<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id);
   }
-  postDrink(alcoinfo:Alcohol): Observable<Alcohol[]>{
+  postDrink(alcoinfo:any): Observable<Alcohol[]>{
     return this.http.post<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/', alcoinfo);
   }
   updateDrink(id:number, updateDrink: Alcohol): Observable<Alcohol[]>{
