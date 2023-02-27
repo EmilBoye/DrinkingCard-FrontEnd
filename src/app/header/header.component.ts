@@ -49,6 +49,8 @@ export class HeaderComponent implements OnInit {
   }
   onLogin():void{
     this.showLoginModal = true;
+    console.warn("loginForm", this.loginForm.value);
+
   }
   onSubmitCreate():void{
     this.confirmPass = this.createUserForm.get('confirmPass');
@@ -56,12 +58,12 @@ export class HeaderComponent implements OnInit {
         alert("Brugeren er oprettet");
 
         this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
-      }
-      else{
         if(this.createUserForm.value.userName.length < 1){
           alert("Du skal skrive dit brugernavn korrekt. Minimum 3 karakter");
         }
-        else{
+      }
+      else{
+        if(this.createUserForm.value.passwordHash?.length < 8 ){
           alert("Adgangskoden skal være minimum 8 karakter langt.");
         }
       }
@@ -84,7 +86,7 @@ export class HeaderComponent implements OnInit {
       this.userChecked = false;
     }
     //this.userObject.userName = this.loginForm.value.userName;
-    this.service.getAllUsers().subscribe(response=>{
+    this.service.getUserById(this.nyBruger.userId).subscribe(response=>{
       if(response){
         console.log(response);
         this.users = response;
