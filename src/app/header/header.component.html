@@ -76,7 +76,7 @@
                 <div class="flex justify-center space-x-4 grid-cols-2">
                   <button
                     class="bg-blue-500 text-white p-2 rounded-lg"
-                    (click)="onSubmitLogin(this.userId)"
+                    (click)="onSubmitLogin()"
                     [disabled]="loginForm.invalid"
                   >
                     Login
@@ -92,6 +92,7 @@
             </form>
           </div>
         </div>
+
         <div *ngIf="user">
           <!--Create form-->
           <div
@@ -113,7 +114,7 @@
                     class="border border-gray-400 p-2 rounded-lg w-full"
                     type="text"
                     name="username"
-                    [(ngModel)]="user.userName"
+                    [(ngModel)]="user.username"
                     placeholder="Brugernavn"/>
                   <div class="text-red-500"></div>
 
@@ -126,7 +127,7 @@
                       class="border border-gray-400 p-2 rounded-lg w-full"
                       type="password"
                       name="passwordhash"
-                      [(ngModel)]="user.passwordHash"
+                      [(ngModel)]="user.passwordhash"
                       placeholder="Adgangskode"/>
                   </div>
                   <div class="flex justify-center space-x-4 grid-cols-2">

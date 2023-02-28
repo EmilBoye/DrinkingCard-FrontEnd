@@ -4,6 +4,7 @@ import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/
 import { Role, RoleType } from '../models/Role-model';
 import { User } from 'src/app/models/User-model';
 import { HttpService } from '../service/httpservice.service';
+import { Alcohol } from '../models/Alcohol-model';
 
 @Component({
   selector: 'app-header',
@@ -11,69 +12,54 @@ import { HttpService } from '../service/httpservice.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  // createUserForm: any = new FormGroup({});
-  // users: User[] = [];
-  // // confirmPass: any;
-  // @Input() nyBruger = {roleId: 0, role:RoleType.User, userName: "", passwordHash: ""}
+  users: User[] = [];
   userChecked: boolean = true;
   showCreateModal = false;
   showLoginModal = false;
   userId: number;
 
 
-  user:any = {
-    id:0,
-    roleId:0,
-    role:RoleType.User,
-    userName:'',
-    passwordHash:''
+  user:User = {
+    id: 0,
+    roleid: 0,
+    role: undefined,
+    username: '',
+    passwordhash: '',
+    author: new Alcohol
   }
   constructor(private service:HttpService, private formBuilder:FormBuilder) { }
 
 
   loginForm = new FormGroup({
-    userId: new FormControl(),
-    roleId: new FormControl(),
     userName: new FormControl('', [Validators.required]),
     passwordHash: new FormControl('', [Validators.required]),
-    roleType: new FormControl(RoleType.User),
-
   });
 
   ngOnInit(): void {
-    // this.createUserForm = this.formBuilder.group({
-    //   roleId: new FormControl(''),
-    //   userName:new FormControl('', [Validators.required]),
-    //   role:this.formBuilder.control(RoleType.User),
-    //   passwordHash:new FormControl('', [Validators.required]),
-    // });
 
 
   }
   onCreate():void{
     this.showCreateModal = true;
-    console.log("User", this.user.value);
+    console.log("User", this.user);
 
     // console.warn("createUserForm",this.createUserForm.value);
   }
   onLogin():void{
     this.showLoginModal = true;
     console.warn("loginForm", this.loginForm.value);
-
-    this.service.getAllUsers().subscribe(u=>{
-      console.log(u);
-
-    });
   }
   onSubmitCreate():void{
     // this.confirmPass = this.createUserForm.get('confirmPass');
 
-    if(this.user.valid){
+    if(this.user.passwordhash.length >= 8 && this.user.username >= "3"){
       this.service.postUser(this.user).subscribe(res=>{
-        this.user = res;
-        console.log(this.user);
+        console.log("Post",this.user);
 
       })
+    }
+    else{
+        alert("Brugernavn skal være minimum 3 karakter langt, og adgangskoden skal være mere eller lig med 8");
     }
       // if(this.createUserForm.value.passwordHash?.length >= 8 && this.createUserForm.value.userName){
       //   alert("Brugeren er oprettet");
@@ -89,14 +75,32 @@ export class HeaderComponent implements OnInit {
       //   }
       // }
   }
-  onSubmitLogin(id:number): void {
+  onSubmitLogin(): void {
     //this.userObject.userName = this.loginForm.value.userName;
-    this.service.getUserById(id).subscribe(response=>{
-      if(response){
-        console.log(response);
+    this.user.username = this.user.username;
+    this.user.passwordhash = this.user.passwordhash;
 
-      }
-    })
+    var userFilter = this.users.filter(u => u.username == this.user.username && u.passwordhash == this.user.passwordhash);
+
+    if(userFilter.length == 0){
+      alert("Forkert brugernavn eller adgangskode");
+      this.userChecked = false;
+    }
+    else if(userFilter.length == 1){
+      this.userChecked = true;
+      this.service.getUserById(this.user.id).subscribe();
+      this.loginForm.reset();
+      window.localStorage.setItem('User',userFilter[0].id.toString());
+      window.location.reload();
+      alert("Du er nu logget ind");
+      this.userChecked = false;
+    }
+    // this.service.getUserById(this.user.id).subscribe(response=>{
+    //   if(response){
+    //     console.log(response);
+
+    //   }
+    // })
   }
   /*const nameToPost = {
       userName:'Emil',

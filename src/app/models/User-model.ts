@@ -4,9 +4,9 @@ import { Role, RoleType } from "./Role-model";
 
 export class User{
   public id : number;
-  public roleId : number;
-  public role : RoleType;
-  public userName : string;
+  public roleid : number;
+  public role? : RoleType;
+  public username : string;
   public author : Alcohol;
-  public passwordHash : string;
+  public passwordhash : string;
 }
