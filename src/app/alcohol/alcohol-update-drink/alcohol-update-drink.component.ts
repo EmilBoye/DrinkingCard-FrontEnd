@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Alcohol, AlcoholType } from 'src/app/models/Alcohol-model';
 import { User } from 'src/app/models/User-model';
 import { HttpService } from 'src/app/service/httpservice.service';
@@ -11,9 +12,9 @@ import { HttpService } from 'src/app/service/httpservice.service';
 export class AlcoholUpdateDrinkComponent implements OnInit {
 
   alcoholUpdate: Alcohol[] = [];
-  constructor(private alcoholService:HttpService) { }
-  Test: Alcohol = {
-    alcoId: 0,
+  constructor(private alcoholService:HttpService, router:Router, public actRoute:ActivatedRoute) { }
+  updateDrink: any = {
+    alcoId: this.actRoute.snapshot.params['id'],
     author: '',
     title: '',
     description: '',
@@ -22,18 +23,37 @@ export class AlcoholUpdateDrinkComponent implements OnInit {
     ingredients: '',
     alcoholType: AlcoholType.Vodka,
     visible: false,
-    user: new User,
     publishDate: new Date(),
     updatedDate: new Date()
   }
 
   ngOnInit(): void {
   }
-  onSubmit(): void {
-    this.alcoholService.updateDrink(this.Test?.alcoId, this.Test).subscribe(a => {
-      console.log(a);
 
-      this.alcoholUpdate = a;
-    });
+
+  // Denne metode henter drink når folk vil opdaterer deres drink.
+  // Så kan programmet hente id'et til den drink de har oprettet
+  getDrink(){
+    return this.alcoholService.getDrinkById(this.updateDrink.alcoId).subscribe((Drink:{}) => {
+      this.updateDrink = Drink;
+    })
+  }
+
+  // onSubmit metoden sørger for at opdaterer drinken korrekt.
+  // Der er sat noget begrænsning på ved hjælp af et if-else statement som gør at der skal være titel samt bruger.
+  onSubmit(): void {
+    console.log(this.updateDrink.title);
+    if(this.updateDrink.title.length >= 5 && this.updateDrink.author){
+
+      this.alcoholService.updateDrink(this.updateDrink?.alcoId, this.updateDrink).subscribe(data => {
+        console.log(data);
+
+        this.alcoholUpdate = data;
+      });
+
+    }
+    else{
+      alert("Titlen skal være mere eller lig med 5 karakter!");
+    }
   }
 }

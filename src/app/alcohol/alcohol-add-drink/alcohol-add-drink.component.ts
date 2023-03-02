@@ -11,7 +11,7 @@ import { HttpService } from 'src/app/service/httpservice.service';
 export class AlcoholAddDrinkComponent implements OnInit {
   alcoholPost: Alcohol[] = [];
   constructor(private alcoholService:HttpService) { }
-  drink: Alcohol = {
+  drink: any = {
     alcoId: 0,
     author: '',
     title: '',
@@ -21,7 +21,6 @@ export class AlcoholAddDrinkComponent implements OnInit {
     ingredients: '',
     alcoholType: AlcoholType.Vodka,
     visible: false,
-    user: new User,
     publishDate: new Date(),
     updatedDate: new Date()
   }
@@ -29,11 +28,13 @@ export class AlcoholAddDrinkComponent implements OnInit {
   }
 
   onSubmit():void{
-    if(this.drink.alcoholType){
-      AlcoholType.Vodka.toString();
+    if(this.drink.title.length >= 5 && this.drink.author){
+      this.alcoholService.postDrink(this.drink).subscribe(a => {
+        console.log(this.drink);
+      });
     }
-    this.alcoholService.postDrink(this.drink).subscribe(a => {
-      console.log(this.drink);
-    });
+    else{
+      alert("Titlen skal være mere eller lig med 5 karakter!");
+    }
   }
 }

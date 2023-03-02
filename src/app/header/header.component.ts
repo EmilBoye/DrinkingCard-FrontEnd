@@ -4,6 +4,7 @@ import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/
 import { Role, RoleType } from '../models/Role-model';
 import { User } from 'src/app/models/User-model';
 import { HttpService } from '../service/httpservice.service';
+import { Alcohol } from '../models/Alcohol-model';
 
 @Component({
   selector: 'app-header',
@@ -11,76 +12,95 @@ import { HttpService } from '../service/httpservice.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  createUserForm: any = new FormGroup({});
   users: User[] = [];
-  confirmPass: any;
-  @Input() nyBruger = {roleId: 0, role:RoleType.User, userName: "", passwordHash: ""}
   userChecked: boolean = true;
   showCreateModal = false;
   showLoginModal = false;
-  userId: number[] = [];
+  userId: number;
 
+
+  user:User = {
+    id: 0,
+    roleid: 0,
+    role: undefined,
+    username: '',
+    passwordhash: '',
+    author: new Alcohol
+  }
   constructor(private service:HttpService, private formBuilder:FormBuilder) { }
 
 
   loginForm = new FormGroup({
-    userId: new FormControl(0),
-    roleId: new FormControl(0),
     userName: new FormControl('', [Validators.required]),
     passwordHash: new FormControl('', [Validators.required]),
-
-    roleType: new FormControl(RoleType.User),
-
   });
 
   ngOnInit(): void {
-    this.createUserForm = this.formBuilder.group({
-        roleId: new FormControl(this.nyBruger.roleId),
-        role: new FormControl(this.nyBruger.role),
-        userName: new FormControl('', [Validators.required]),
-        passwordHash: new FormControl('', [Validators.required]),
-    });
-    this.service.getAllUsers().subscribe(u=>this.users = u);
 
-    // var placeholder = localStorage.getItem('User');
-    // this.userId = placeholder == null ? 0 : parseInt(placeholder);
 
-    // if(this.userId){
-
-    // }
-    // else{
-
-    // }
   }
   onCreate():void{
     this.showCreateModal = true;
-    console.warn("createUserForm",this.createUserForm.value);
-    // this.service.getUser().subscribe(response => {console.log(response);
-    // })
+    console.log("User", this.user);
 
+    // console.warn("createUserForm",this.createUserForm.value);
   }
   onLogin():void{
     this.showLoginModal = true;
+    console.warn("loginForm", this.loginForm.value);
+  }
+  onSubmitCreate():void{
+    // this.confirmPass = this.createUserForm.get('confirmPass');
+
+    if(this.user.passwordhash.length >= 8 && this.user.username >= "3"){
+      this.service.postUser(this.user).subscribe(res=>{
+        console.log("Post",this.user);
+
+      })
+    }
+    else{
+        alert("Brugernavn skal være minimum 3 karakter langt, og adgangskoden skal være mere eller lig med 8");
+    }
+      // if(this.createUserForm.value.passwordHash?.length >= 8 && this.createUserForm.value.userName){
+      //   alert("Brugeren er oprettet");
+
+      //   //this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
+      //   if(this.createUserForm.value.userName.length < 1){
+      //     alert("Du skal skrive dit brugernavn korrekt. Minimum 3 karakter");
+      //   }
+      // }
+      // else{
+      //   if(this.createUserForm.value.passwordHash?.length < 8 ){
+      //     alert("Adgangskoden skal være minimum 8 karakter langt.");
+      //   }
+      // }
+  }
+  onSubmitLogin(): void {
     //this.userObject.userName = this.loginForm.value.userName;
-    this.service.getAllUsers().subscribe(response=>{
-      if(response){
-        console.log(response);
-        this.users = response;
-      }
-    })
-    // if(this.confirmPass.value == this.loginForm.value.passwordHash){
-    //   if(this.loginForm.value.passwordHash?.length)
-    //   {
+    this.user.username = this.user.username;
+    this.user.passwordhash = this.user.passwordhash;
+
+    var userFilter = this.users.filter(u => u.username == this.user.username && u.passwordhash == this.user.passwordhash);
+
+    if(userFilter.length == 0){
+      alert("Forkert brugernavn eller adgangskode");
+      this.userChecked = false;
+    }
+    else if(userFilter.length == 1){
+      this.userChecked = true;
+      this.service.getUserById(this.user.id).subscribe();
+      this.loginForm.reset();
+      window.localStorage.setItem('User',userFilter[0].id.toString());
+      window.location.reload();
+      alert("Du er nu logget ind");
+      this.userChecked = false;
+    }
+    // this.service.getUserById(this.user.id).subscribe(response=>{
+    //   if(response){
+    //     console.log(response);
 
     //   }
-    // }
-
-
-  }
-  onSubmit():void{
-    this.service.postUser(this.nyBruger).subscribe(response=>{console.log(response);
-      console.log("Ny bruger",this.nyBruger);
-    });
+    // })
   }
   /*const nameToPost = {
       userName:'Emil',

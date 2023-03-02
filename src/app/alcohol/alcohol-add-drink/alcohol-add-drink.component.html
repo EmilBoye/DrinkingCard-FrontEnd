@@ -1,5 +1,4 @@
-<p>alcohol-add-drink works!</p>
-<div class="bg-gray-300 justify-center">
+<div class="bg-gray-300 justify-items-center">
 <div class="" *ngIf="drink">
   <br>
   <br>
@@ -9,7 +8,7 @@
   <form #drinkForm="ngForm" class="justify-center">
     <div class="mb-3">
       <label class="form-label">Oprettet af</label>
-      <input type="text" class="form-input" name="author" [(ngModel)]="drink.user.author">
+      <input type="text" class="form-input" name="author" [(ngModel)]="drink.author">
     </div>
     <div class="mb-3">
       <label class="form-label">Titel</label>
@@ -21,6 +20,10 @@
     </div>
     <div class="mb-3">
       <input type="file" name="featuredimageurl" [(ngModel)]="drink.featuredImageUrl">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Ingredienser</label>
+      <input type="text" class="form-input" name="ingredients" [(ngModel)]="drink.ingredients">
     </div>
     <!-- <div class="mb-3 justify-center">
       <label class="form-label">Type af alkohol</label>

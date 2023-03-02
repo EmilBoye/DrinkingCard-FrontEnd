@@ -22,7 +22,7 @@ export enum AlcoholType{
 }
 
 export class Alcohol{
-  public alcoId:number;
+  public id:number;
   public author:string;
   public title:string;
   public description:string;
@@ -32,7 +32,6 @@ export class Alcohol{
   public alcoholType:AlcoholType;
   public visible:boolean;
   //UserId:number;
-  public user:User
   public publishDate:Date;
   public updatedDate:Date;
 }

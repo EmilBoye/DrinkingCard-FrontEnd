@@ -14,24 +14,24 @@
   </div>
     <div *ngFor="let drink of drinks">
       <!-- <h1>ID: {{drink.alcoId}}</h1> -->
-      <h1>Udgivet af: {{drink.user.author}}</h1>
+      <h1>Udgivet af: {{drink.author}}</h1>
       <h1>Titel: {{drink.title}}</h1>
       <h1>Styrke: {{drink.strength}}</h1>
       <h1>Beskrivelse: {{drink.description}}</h1>
       <h1>Ingredienser: {{drink.ingredients}}</h1>
       <h1>Alkohol Type: {{drink.alcoholType}}</h1>
       <h1>Synlighed: {{drink.visible}}</h1>
-      <h1>Bruger: {{drink.user}}</h1>
+      <!-- <h1>Bruger: {{drink.user}}</h1> -->
       <h1>Slået op: {{drink.publishDate}}</h1>
       <h1>Opdateret: {{drink.updatedDate}}</h1>
 
       <p>Her har jeg prøvet med User klassen</p>
 
       <div *ngFor="let user of users">
-        <h1>user: {{user.userName}}</h1>
-        <h1>password: {{user.passwordHash}}</h1>
-        <h1>userid {{user.userId}}</h1>
-        <h1>roleId {{user.roleId}}</h1>
+        <h1>user: {{user.username}}</h1>
+        <h1>password: {{user.passwordhash}}</h1>
+        <h1>userid {{user.id}}</h1>
+        <h1>roleId {{user.roleid}}</h1>
         <h1>role {{user.role}}</h1>
       </div>
 <!-- <div *ngFor="let drinks of alcoholDrinks">
