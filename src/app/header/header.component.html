@@ -95,13 +95,9 @@
 
         <div *ngIf="user">
           <!--Create form-->
-          <div
-            class="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50"
-            *ngIf="showCreateModal">
+          <div class="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50" *ngIf="showCreateModal">
           </div>
-          <div
-            class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50"
-            *ngIf="showCreateModal">
+          <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50" *ngIf="showCreateModal">
             <div class="bg-white rounded-lg p-6">
               <h2 class="text-lg font-medium mb-4 text-center">Opret</h2>
               <form #userForm="ngForm" (ngSubmit)="onCreate()">

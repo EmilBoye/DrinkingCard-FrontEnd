@@ -12,7 +12,7 @@ export class AlcoholAddDrinkComponent implements OnInit {
   alcoholPost: Alcohol[] = [];
   constructor(private alcoholService:HttpService) { }
   drink: any = {
-    alcoId: 0,
+    id: 0,
     author: '',
     title: '',
     description: '',

@@ -22,6 +22,11 @@ export class HttpService {
   getUserById(id: number): Observable<User[]>{
     return this.http.get<User[]>(this.apiBaseUrl + '/api/User/' + id);
   }
+  // getLogin(user:User):Observable<User[]>{
+  //   console.log("api "+user.username);
+
+  //   return this.http.get<User[]>(this.apiBaseUrl + '/api/User/login' + user.username + '/' +  user.passwordhash);
+  // }
   postUser(userinfo:any): Observable<User[]>{
     return this.http.post<User[]>(this.apiBaseUrl + '/api/User/', userinfo);
   }
@@ -33,15 +38,15 @@ export class HttpService {
   }
 
 
-  //Alkohol CRUD
+  //Alcohol CRUD
   getAllDrinks():Observable<Alcohol[]>{
     return this.http.get<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/');
   }
   getDrinkById(id: number): Observable<Alcohol[]>{
     return this.http.get<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id);
   }
-  postDrink(drinkinfo:any): Observable<Alcohol[]>{
-    return this.http.post<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/', drinkinfo);
+  postDrink(alcoinfo:any): Observable<Alcohol[]>{
+    return this.http.post<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/', alcoinfo);
   }
   updateDrink(id:number, updateDrink: Alcohol): Observable<Alcohol[]>{
     return this.http.put<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id, updateDrink);
@@ -49,7 +54,6 @@ export class HttpService {
   deleteDrink(id:number): Observable<Alcohol>{
     return this.http.delete<Alcohol>(this.apiBaseUrl + '/api/Alcohol/' + id);
   }
-
 
   //Alkoholfri CRUD
   getAllZeroDrinks():Observable<NonAlcohol[]>{

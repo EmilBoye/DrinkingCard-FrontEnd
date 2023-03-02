@@ -14,7 +14,7 @@ export class AlcoholUpdateDrinkComponent implements OnInit {
   alcoholUpdate: Alcohol[] = [];
   constructor(private alcoholService:HttpService, router:Router, public actRoute:ActivatedRoute) { }
   updateDrink: any = {
-    alcoId: this.actRoute.snapshot.params['id'],
+    id: this.actRoute.snapshot.params['id'],
     author: '',
     title: '',
     description: '',
@@ -28,6 +28,7 @@ export class AlcoholUpdateDrinkComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 
@@ -42,10 +43,10 @@ export class AlcoholUpdateDrinkComponent implements OnInit {
   // onSubmit metoden sørger for at opdaterer drinken korrekt.
   // Der er sat noget begrænsning på ved hjælp af et if-else statement som gør at der skal være titel samt bruger.
   onSubmit(): void {
-    console.log(this.updateDrink.title);
+    console.log(this.updateDrink);
     if(this.updateDrink.title.length >= 5 && this.updateDrink.author){
 
-      this.alcoholService.updateDrink(this.updateDrink?.alcoId, this.updateDrink).subscribe(data => {
+      this.alcoholService.updateDrink(this.updateDrink?.id, this.updateDrink).subscribe(data => {
         console.log(data);
 
         this.alcoholUpdate = data;
