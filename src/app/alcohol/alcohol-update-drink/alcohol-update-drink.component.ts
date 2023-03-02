@@ -31,11 +31,16 @@ export class AlcoholUpdateDrinkComponent implements OnInit {
   }
 
 
+  // Denne metode henter drink når folk vil opdaterer deres drink.
+  // Så kan programmet hente id'et til den drink de har oprettet
   getDrink(){
     return this.alcoholService.getDrinkById(this.updateDrink.alcoId).subscribe((Drink:{}) => {
       this.updateDrink = Drink;
     })
   }
+
+  // onSubmit metoden sørger for at opdaterer drinken korrekt.
+  // Der er sat noget begrænsning på ved hjælp af et if-else statement som gør at der skal være titel samt bruger.
   onSubmit(): void {
     console.log(this.updateDrink.title);
     if(this.updateDrink.title.length >= 5 && this.updateDrink.author){
