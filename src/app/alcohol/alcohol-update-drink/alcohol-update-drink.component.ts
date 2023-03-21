@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Alcohol, AlcoholType } from 'src/app/models/Alcohol-model';
-import { User } from 'src/app/models/User-model';
 import { HttpService } from 'src/app/service/httpservice.service';
 
 @Component({
@@ -37,7 +36,7 @@ export class AlcoholUpdateDrinkComponent implements OnInit {
   getDrink(){
     return this.alcoholService.getDrinkById(this.updateDrink.alcoId).subscribe((Drink:{}) => {
       this.updateDrink = Drink;
-    })
+    });
   }
 
   // onSubmit metoden sørger for at opdaterer drinken korrekt.
@@ -45,13 +44,10 @@ export class AlcoholUpdateDrinkComponent implements OnInit {
   onSubmit(): void {
     console.log(this.updateDrink);
     if(this.updateDrink.title.length >= 5 && this.updateDrink.author){
-
       this.alcoholService.updateDrink(this.updateDrink?.id, this.updateDrink).subscribe(data => {
         console.log(data);
-
         this.alcoholUpdate = data;
       });
-
     }
     else{
       alert("Titlen skal være mere eller lig med 5 karakter!");
