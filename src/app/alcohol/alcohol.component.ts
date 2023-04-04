@@ -4,6 +4,7 @@ import { User } from '../models/User-model';
 import { HttpService } from '../service/httpservice.service';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { AlcoholAddDrinkComponent } from './alcohol-add-drink/alcohol-add-drink.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-alcohol',
@@ -12,6 +13,8 @@ import { AlcoholAddDrinkComponent } from './alcohol-add-drink/alcohol-add-drink.
 })
 export class AlcoholComponent implements OnInit {
   drinks: Alcohol[] = [];
+
+  user: HeaderComponent[] = [];
   constructor(private alcoholService:HttpService, private router:Router) { }
 
 
