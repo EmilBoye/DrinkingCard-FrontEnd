@@ -16,8 +16,6 @@ export class HeaderComponent implements OnInit {
   userChecked: boolean = true;
   showCreateModal = false;
   showLoginModal = false;
-  userId: number;
-
 
   user:User = {
     id: 0,
@@ -47,11 +45,9 @@ export class HeaderComponent implements OnInit {
   }
   onLogin():void{
     this.showLoginModal = true;
-    console.warn("loginForm", this.loginForm.value);
+    console.warn("loginForm", this.user);
   }
   onSubmitCreate():void{
-    // this.confirmPass = this.createUserForm.get('confirmPass');
-
     if(this.user.passwordhash.length >= 8 && this.user.username >= "3"){
       this.service.postUser(this.user).subscribe(res=>{
         console.log("Post",this.user);
@@ -61,24 +57,11 @@ export class HeaderComponent implements OnInit {
     else{
         alert("Brugernavn skal være minimum 3 karakter langt, og adgangskoden skal være mere eller lig med 8");
     }
-      // if(this.createUserForm.value.passwordHash?.length >= 8 && this.createUserForm.value.userName){
-      //   alert("Brugeren er oprettet");
-
-      //   //this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
-      //   if(this.createUserForm.value.userName.length < 1){
-      //     alert("Du skal skrive dit brugernavn korrekt. Minimum 3 karakter");
-      //   }
-      // }
-      // else{
-      //   if(this.createUserForm.value.passwordHash?.length < 8 ){
-      //     alert("Adgangskoden skal være minimum 8 karakter langt.");
-      //   }
-      // }
   }
+
   onSubmitLogin(): void {
-    //this.userObject.userName = this.loginForm.value.userName;
-    this.user.username = this.user.username;
-    this.user.passwordhash = this.user.passwordhash;
+    this.loginForm.value.userName = this.user.username;
+    this.loginForm.value.passwordHash = this.user.passwordhash;
 
     var userFilter = this.users.filter(u => u.username == this.user.username && u.passwordhash == this.user.passwordhash);
 
@@ -88,22 +71,12 @@ export class HeaderComponent implements OnInit {
     }
     else if(userFilter.length == 1){
       this.userChecked = true;
-      this.service.getUserById(this.user.id).subscribe();
+      this.service.postUser(this.user.id).subscribe();
       this.loginForm.reset();
       window.localStorage.setItem('User',userFilter[0].id.toString());
       window.location.reload();
       alert("Du er nu logget ind");
       this.userChecked = false;
     }
-    // this.service.getUserById(this.user.id).subscribe(response=>{
-    //   if(response){
-    //     console.log(response);
-
-    //   }
-    // })
   }
-  /*const nameToPost = {
-      userName:'Emil',
-      passwordHash:'123456789'
-    }*/
 }

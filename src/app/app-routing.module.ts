@@ -6,6 +6,8 @@ import { AlcoholComponent } from './alcohol/alcohol.component';
 import { AppComponent } from './app.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { HeaderComponent } from './header/header.component';
+import { NonalcoholAddDrinkComponent } from './nonalcohol/nonalcohol-add-drink/nonalcohol-add-drink.component';
+import { NonalcoholUpdateDrinkComponent } from './nonalcohol/nonalcohol-update-drink/nonalcohol-update-drink.component';
 import { NonalcoholComponent } from './nonalcohol/nonalcohol.component';
 
 const routes: Routes = [
@@ -24,6 +26,12 @@ const routes: Routes = [
   },
   {
     path: 'alkoholfri', component: NonalcoholComponent
+  },
+  {
+    path: 'alkoholfri/tilføj', component: NonalcoholAddDrinkComponent
+  },
+  {
+    path: 'alkoholfri/opdater/:id', component: NonalcoholUpdateDrinkComponent
   },
 ];
 

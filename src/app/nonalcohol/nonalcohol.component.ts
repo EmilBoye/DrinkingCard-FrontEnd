@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NonAlcohol } from '../models/NonAlcohol-model';
+import { HttpService } from '../service/httpservice.service';
 
 @Component({
   selector: 'app-nonalcohol',
@@ -7,18 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./nonalcohol.component.css']
 })
 export class NonalcoholComponent implements OnInit {
-
-  constructor(private router:Router) { }
+  zeroDrink: NonAlcohol[] = [];
+  constructor(private zeroAlcoholService:HttpService ,private router:Router) { }
 
   ngOnInit(): void {
+    this.zeroAlcoholService.getAllZeroDrinks().subscribe(a => {
+      this.zeroDrink = a;
+    });
   }
 
 
-  createDrink():void{
-    this.router.navigate(['alkohol/tilføj']);
+  createZeroDrink():void{
+    this.router.navigate(['alkoholfri/tilføj']);
   }
-  editDrink(id:any): void {
-    this.router.navigate(['alkohol/opdater/',id])
+  editZeroDrink(id:any): void {
+    this.router.navigate(['alkoholfri/opdater/',id])
 
   }
 }

@@ -26,16 +26,15 @@ export class AlcoholComponent implements OnInit {
   createDrink():void{
     this.router.navigate(['alkohol/tilføj']);
   }
+
   editDrink(id:any): void {
     this.router.navigate(['alkohol/opdater/',id])
 
   }
+
   deleteDrink(drinkId:any){
     this.alcoholService.deleteDrink(drinkId).subscribe(a=> {
       console.log(drinkId);
     });
-  }
-  onSubmit():void{
-
   }
 }

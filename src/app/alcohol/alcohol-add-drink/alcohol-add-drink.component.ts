@@ -9,6 +9,7 @@ import { HttpService } from 'src/app/service/httpservice.service';
 })
 export class AlcoholAddDrinkComponent implements OnInit {
   alcoholPost: Alcohol[] = [];
+
   constructor(private alcoholService:HttpService) { }
   drink: any = {
     id: 0,
@@ -18,7 +19,7 @@ export class AlcoholAddDrinkComponent implements OnInit {
     featuredImageUrl: '',
     strength: '',
     ingredients: '',
-    alcoholType: AlcoholType.Vodka,
+    alcoholType: AlcoholType,
     visible: false,
     publishDate: new Date(),
     updatedDate: new Date()
@@ -26,14 +27,15 @@ export class AlcoholAddDrinkComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  onSubmit():void{
+
+  createDrink():void{
     if(this.drink.title.length >= 5 && this.drink.author){
-      this.alcoholService.postDrink(this.drink).subscribe(a => {
-        console.log(this.drink);
+      this.alcoholService.postDrink(this.drink).subscribe( a=> {
+        this.drink = a;
       });
     }
     else{
-      alert("Titlen skal være mere eller lig med 5 karakter!");
+      alert("Titlen skal være mere eller lig med 5 karakter")
     }
   }
 }

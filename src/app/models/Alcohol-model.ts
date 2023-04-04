@@ -31,7 +31,6 @@ export class Alcohol{
   public ingredients:string
   public alcoholType:AlcoholType;
   public visible:boolean;
-  //UserId:number;
   public publishDate:Date;
   public updatedDate:Date;
 }

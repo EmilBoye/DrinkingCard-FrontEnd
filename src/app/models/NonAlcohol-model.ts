@@ -8,7 +8,6 @@ export class NonAlcohol{
   public featuredImageUrl:string;
   public ingredients:string
   public visible:boolean;
-  public user:User
   public publishDate:Date;
   public updatedDate:Date;
 }
