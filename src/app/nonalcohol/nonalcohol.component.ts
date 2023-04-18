@@ -24,6 +24,11 @@ export class NonalcoholComponent implements OnInit {
   }
   editZeroDrink(id:any): void {
     this.router.navigate(['alkoholfri/opdater/',id])
+  }
 
+  deleteZeroDrink(drinkId:any){
+    this.zeroAlcoholService.deleteZeroDrink(drinkId).subscribe(a=> {
+      console.log(drinkId);
+    });
   }
 }
