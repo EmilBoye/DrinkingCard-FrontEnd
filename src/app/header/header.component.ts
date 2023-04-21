@@ -60,8 +60,12 @@ export class HeaderComponent implements OnInit {
   }
 
   onSubmitLogin(): void {
-    this.loginForm.value.userName = this.user.username;
-    this.loginForm.value.passwordHash = this.user.passwordhash;
+    /* De to linjer der er her tager og tjekker værdien for username og passwordet.
+    Da man prøver at tildele variablerne en mulig værdi med undefined så kan man benytte sig af
+    en så kan man benytte sig af nullish coalescing operatoren "??"  som giver en fallback
+    */
+    this.user.username = this.loginForm.value.userName ?? '';
+    this.user.passwordhash = this.loginForm.value.passwordHash ?? '';
 
     var userFilter = this.users.filter(u => u.username == this.user.username && u.passwordhash == this.user.passwordhash);
 
@@ -71,7 +75,7 @@ export class HeaderComponent implements OnInit {
     }
     else if(userFilter.length == 1){
       this.userChecked = true;
-      this.service.postUser(this.user.id).subscribe();
+      this.service.postUser(userFilter[0].id).subscribe();
       this.loginForm.reset();
       window.localStorage.setItem('User',userFilter[0].id.toString());
       window.location.reload();
