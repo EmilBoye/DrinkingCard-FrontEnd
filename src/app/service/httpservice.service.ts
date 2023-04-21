@@ -66,7 +66,7 @@ export class HttpService {
     return this.http.post<NonAlcohol[]>(this.apiBaseUrl + '/api/NonAlcohol/', drinkinfo);
   }
   updateZeroDrink(id:number, updateDrink:NonAlcohol):Observable<NonAlcohol[]>{
-    return this.http.put<NonAlcohol[]>(this.apiBaseUrl + '/api/NonAlcohol' + id, updateDrink);
+    return this.http.put<NonAlcohol[]>(this.apiBaseUrl + '/api/NonAlcohol/' + id, updateDrink);
   }
   deleteZeroDrink(id:number) : Observable<NonAlcohol[]>{
     return this.http.delete<NonAlcohol[]>(this.apiBaseUrl + '/api/NonAlcohol/' + id);

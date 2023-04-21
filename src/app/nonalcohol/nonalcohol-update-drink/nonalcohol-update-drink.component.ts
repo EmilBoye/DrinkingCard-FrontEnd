@@ -42,7 +42,7 @@ export class NonalcoholUpdateDrinkComponent implements OnInit {
   onSubmit(): void {
     console.log(this.updateDrink);
     if(this.updateDrink.title.length >= 5 && this.updateDrink.author){
-      this.nonAlcoholService.updateDrink(this.updateDrink?.id, this.updateDrink).subscribe(data => {
+      this.nonAlcoholService.updateZeroDrink(this.updateDrink?.id, this.updateDrink).subscribe(data => {
         console.log(data);
         this.nonAlcoholUpdate = data;
       });
