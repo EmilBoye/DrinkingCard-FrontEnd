@@ -19,7 +19,7 @@ export class AlcoholAddDrinkComponent implements OnInit {
     featuredImageUrl: '',
     strength: '',
     ingredients: '',
-    alcoholType: AlcoholType,
+    alcoholType: AlcoholType.Vodka,
     visible: false,
     publishDate: new Date(),
     updatedDate: new Date()
