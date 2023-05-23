@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
     if(this.user.passwordhash.length >= 8 && this.user.username >= "3"){
       this.service.postUser(this.user).subscribe(res=>{
         console.log("Post",this.user);
-
+        window.location.reload();
       })
     }
     else{
@@ -88,5 +88,11 @@ export class HeaderComponent implements OnInit {
 
       this.userChecked = false;
     }
+  }
+  onLogout(): void {
+
+    window.localStorage.removeItem('User');
+    window.location.reload();
+    console.log(this.userChecked);
   }
 }

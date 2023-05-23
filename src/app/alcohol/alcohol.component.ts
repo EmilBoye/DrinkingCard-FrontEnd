@@ -5,6 +5,7 @@ import { HttpService } from '../service/httpservice.service';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { AlcoholAddDrinkComponent } from './alcohol-add-drink/alcohol-add-drink.component';
 import { HeaderComponent } from '../header/header.component';
+import { AuthService } from '../service/authservice';
 
 @Component({
   selector: 'app-alcohol',
@@ -15,7 +16,7 @@ export class AlcoholComponent implements OnInit {
   drinks: Alcohol[] = [];
 
   user: HeaderComponent[] = [];
-  constructor(private alcoholService:HttpService, private router:Router) { }
+  constructor(private alcoholService:HttpService, private router:Router, private authService:AuthService) { }
 
 
   ngOnInit(): void {
@@ -27,7 +28,12 @@ export class AlcoholComponent implements OnInit {
   }
 
   createDrink():void{
-    this.router.navigate(['alkohol/tilføj']);
+    // if(this.authService.isLoggedIn()) {
+     this.router.navigate(['alkohol/tilføj']);
+    //}
+    //else{
+      //alert("Du skal være logget ind!");
+    //}
   }
 
   editDrink(id:any): void {
