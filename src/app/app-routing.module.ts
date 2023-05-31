@@ -9,17 +9,20 @@ import { HeaderComponent } from './header/header.component';
 import { NonalcoholAddDrinkComponent } from './nonalcohol/nonalcohol-add-drink/nonalcohol-add-drink.component';
 import { NonalcoholUpdateDrinkComponent } from './nonalcohol/nonalcohol-update-drink/nonalcohol-update-drink.component';
 import { NonalcoholComponent } from './nonalcohol/nonalcohol.component';
+import { LoginComponent } from './login/login.component';
+import { CreateComponent } from './create/create.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch:'full', redirectTo:'hjem'},
   {
-    path: 'hjem', component: FrontpageComponent,
+    path: 'hjem', component: FrontpageComponent
   },
   {
     path: 'alkohol', component: AlcoholComponent
   },
   {
-    path: 'alkohol/tilføj', component: AlcoholAddDrinkComponent
+    path: 'alkohol/tilføj', component: AlcoholAddDrinkComponent,
   },
   {
     path: 'alkohol/opdater/:id' , component:AlcoholUpdateDrinkComponent
@@ -33,12 +36,18 @@ const routes: Routes = [
   {
     path: 'alkoholfri/opdater/:id', component: NonalcoholUpdateDrinkComponent
   },
+  {
+    path: 'login', component: LoginComponent
+  },
+  {
+    path: 'opret', component: CreateComponent
+  }
 ];
-
+// canActivate: [AuthGuard]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [HeaderComponent, AlcoholComponent, NonalcoholComponent, AlcoholAddDrinkComponent,]
+export const routingComponents = [HeaderComponent, AlcoholComponent, NonalcoholComponent, AlcoholAddDrinkComponent, LoginComponent, CreateComponent]

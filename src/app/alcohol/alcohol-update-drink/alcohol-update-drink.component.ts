@@ -12,6 +12,8 @@ export class AlcoholUpdateDrinkComponent implements OnInit {
 
   alcoholUpdate: Alcohol[] = [];
   constructor(private alcoholService:HttpService, router:Router, public actRoute:ActivatedRoute) { }
+
+  //Any er bare et objekt som er tomt. Den får kun de værdier man selv indsætter.
   updateDrink: any = {
     id: this.actRoute.snapshot.params['id'],
     author: '',
@@ -27,14 +29,15 @@ export class AlcoholUpdateDrinkComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    // Så henter den alle værdier og viser det.
+    this.getDrink();
   }
 
 
   // Denne metode henter drink når folk vil opdaterer deres drink.
   // Så kan programmet hente id'et til den drink de har oprettet
   getDrink(){
-    return this.alcoholService.getDrinkById(this.updateDrink.alcoId).subscribe((Drink:{}) => {
+    return this.alcoholService.getDrinkById(this.updateDrink.id).subscribe((Drink:{}) => {
       this.updateDrink = Drink;
     });
   }

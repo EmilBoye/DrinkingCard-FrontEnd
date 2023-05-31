@@ -22,11 +22,6 @@ export class HttpService {
   getUserById(id: number): Observable<User>{
     return this.http.get<User>(this.apiBaseUrl + '/api/User/' + id);
   }
-  // getLogin(user:User):Observable<User[]>{
-  //   console.log("api "+user.username);
-
-  //   return this.http.get<User[]>(this.apiBaseUrl + '/api/User/login' + user.username + '/' +  user.passwordhash);
-  // }
   postUser(userinfo:any): Observable<User[]>{
     return this.http.post<User[]>(this.apiBaseUrl + '/api/User/', userinfo);
   }

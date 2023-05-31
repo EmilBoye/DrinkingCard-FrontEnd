@@ -25,15 +25,20 @@ export class AlcoholComponent implements OnInit {
       console.log("Alkohol",a);
 
     });
+
+    alert("Denne side er kun for personer over 18 år.");
   }
 
   createDrink():void{
-    // if(this.authService.isLoggedIn()) {
+    //Hvis brugeren er logget ind får man tilladelse her til at gå videre
+    if(this.authService.isLoggedIn()) {
      this.router.navigate(['alkohol/tilføj']);
-    //}
-    //else{
-      //alert("Du skal være logget ind!");
-    //}
+    }
+    //Hvis brugeren ikke er logget ind får man en alert og bliver navigeret til login.
+    else{
+      alert("Du skal være logget ind!");
+      this.router.navigate(['login']);
+    }
   }
 
   editDrink(id:any): void {
