@@ -4,6 +4,7 @@ import { Alcohol } from '../models/Alcohol-model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from '../service/httpservice.service';
 import { AuthService } from '../service/authservice';
+import { RoleType } from '../models/Role-model';
 
 @Component({
   selector: 'app-login',

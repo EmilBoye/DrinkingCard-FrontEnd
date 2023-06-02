@@ -19,7 +19,7 @@ export class AlcoholAddDrinkComponent implements OnInit {
     featuredImageUrl: '',
     strength: '',
     ingredients: '',
-    alcoholType: AlcoholType.Vodka,
+    alcoholType: null,
     visible: false,
     publishDate: new Date(),
     updatedDate: new Date()
@@ -27,15 +27,27 @@ export class AlcoholAddDrinkComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
   createDrink():void{
-    if(this.drink.title.length >= 5 && this.drink.author){
+    if(this.drink.title.length >= 5 && this.drink.author && this.drink.ingredients.length > 0){
+      this.addIngredient();
       this.alcoholService.postDrink(this.drink).subscribe( a=> {
         this.drink = a;
       });
     }
     else{
       alert("Titlen skal være mere eller lig med 5 karakter")
+    }
+  }
+  // addIngredient(ingredient: string): void {
+  //   this.drink.ingredients.push(ingredient);
+  // }
+  // this.addIngredient(this.drink.ingredients);
+  // this.addIngredient(this.drink.ingredients);
+
+  addIngredient(): void {
+    if(this.drink.ingredients){
+      const ingredientArray = this.drink.ingredients.split('. ');
+      this.drink.ingredients = ingredientArray.join('.\n');
     }
   }
 }

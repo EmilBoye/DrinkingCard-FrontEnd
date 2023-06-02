@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { RoleType } from '../models/Role-model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +23,6 @@ export class AuthService {
   isLoggedIn() {
     return this.loggedInStatus;
   }
+
+
 }
