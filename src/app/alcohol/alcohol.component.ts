@@ -6,6 +6,7 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { AlcoholAddDrinkComponent } from './alcohol-add-drink/alcohol-add-drink.component';
 import { HeaderComponent } from '../header/header.component';
 import { AuthService } from '../service/authservice';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-alcohol',
@@ -17,6 +18,7 @@ export class AlcoholComponent implements OnInit {
   searchValue: string = '';
 
   user: HeaderComponent[] = [];
+  userLogin: LoginComponent;
   constructor(private alcoholService:HttpService, private router:Router, private authService:AuthService) { }
 
 
