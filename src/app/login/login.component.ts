@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from '../service/httpservice.service';
 import { AuthService } from '../service/authservice';
 import { RoleType } from '../models/Role-model';
+import { NonAlcohol } from '../models/NonAlcohol-model';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
     role: undefined,
     username: '',
     passwordhash: '',
-    author: new Alcohol
+    alcohol: new Alcohol,
+    nonalcohol: new NonAlcohol
   }
   loginForm = new FormGroup({
     userName: new FormControl('', [Validators.required]),

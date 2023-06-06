@@ -5,6 +5,7 @@ import { Role, RoleType } from '../models/Role-model';
 import { User } from 'src/app/models/User-model';
 import { HttpService } from '../service/httpservice.service';
 import { Alcohol } from '../models/Alcohol-model';
+import { NonAlcohol } from '../models/NonAlcohol-model';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,8 @@ export class HeaderComponent implements OnInit {
     role: undefined,
     username: '',
     passwordhash: '',
-    author: new Alcohol
+    alcohol: new Alcohol,
+    nonalcohol: new NonAlcohol
   }
   constructor(private service:HttpService, private formBuilder:FormBuilder) { }
 

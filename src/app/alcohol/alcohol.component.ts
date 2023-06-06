@@ -48,9 +48,17 @@ export class AlcoholComponent implements OnInit {
 
   }
 
-  deleteDrink(drinkId:any){
+  deleteDrink(drinkId:any): void{
     this.alcoholService.deleteDrink(drinkId).subscribe(a=> {
       console.log(drinkId);
     });
   }
+
+  // isCurrentUser(authorId:string): boolean {
+  //   const currentUser: any = this.alcoholService.getUserById(this.userLogin.user.id);
+  //   console.log(currentUser);
+
+  //   return currentUser && currentUser.id === authorId;
+
+  // }
 }

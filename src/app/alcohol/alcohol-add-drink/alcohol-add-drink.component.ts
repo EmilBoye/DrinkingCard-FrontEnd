@@ -29,9 +29,13 @@ export class AlcoholAddDrinkComponent implements OnInit {
   }
   createDrink():void{
     if(this.drink.title.length >= 5 && this.drink.author && this.drink.ingredients.length > 0){
-      this.addIngredient();
-      this.alcoholService.postDrink(this.drink).subscribe( a=> {
-        this.drink = a;
+      // this.addIngredient();
+      this.alcoholService.postDrink(this.drink).subscribe((createdDrink:any) => {
+        this.drink = createdDrink;
+        const createdDrinkId: number = createdDrink.id;
+
+
+        this.drink = createdDrinkId;
       });
     }
     else{
@@ -44,10 +48,10 @@ export class AlcoholAddDrinkComponent implements OnInit {
   // this.addIngredient(this.drink.ingredients);
   // this.addIngredient(this.drink.ingredients);
 
-  addIngredient(): void {
-    if(this.drink.ingredients){
-      const ingredientArray = this.drink.ingredients.split('. ');
-      this.drink.ingredients = ingredientArray.join('.\n');
-    }
-  }
+  // addIngredient(): void {
+  //   if(this.drink.ingredients){
+  //     const ingredientArray = this.drink.ingredients.split('. ');
+  //     this.drink.ingredients = ingredientArray.join('.\n');
+  //   }
+  // }
 }

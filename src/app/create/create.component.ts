@@ -3,6 +3,7 @@ import { User } from '../models/User-model';
 import { Alcohol } from '../models/Alcohol-model';
 import { HttpService } from '../service/httpservice.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NonAlcohol } from '../models/NonAlcohol-model';
 
 @Component({
   selector: 'app-create',
@@ -21,7 +22,8 @@ export class CreateComponent implements OnInit {
     role: undefined,
     username: '',
     passwordhash: '',
-    author: new Alcohol
+    alcohol: new Alcohol,
+    nonalcohol: new NonAlcohol
   }
   constructor(private service:HttpService, private formBuilder:FormBuilder) { }
 
