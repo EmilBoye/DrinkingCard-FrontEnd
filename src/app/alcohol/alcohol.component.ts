@@ -14,6 +14,7 @@ import { AuthService } from '../service/authservice';
 })
 export class AlcoholComponent implements OnInit {
   drinks: Alcohol[] = [];
+  searchValue: string = '';
 
   user: HeaderComponent[] = [];
   constructor(private alcoholService:HttpService, private router:Router, private authService:AuthService) { }
@@ -51,4 +52,10 @@ export class AlcoholComponent implements OnInit {
       console.log(drinkId);
     });
   }
-}
+  searchDrinks(): void {
+    this.alcoholService.getAllDrinks().subscribe(drinks => {
+      this.drinks = drinks.filter(drink =>
+        drink.ingredients.toLowerCase().includes(this.searchValue.toLowerCase())
+      );
+    });
+}}

@@ -26,6 +26,7 @@ export class NonalcoholAddDrinkComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  
 
   createDrink():void{
     if(this.zeroDrink.title.length >= 5 && this.zeroDrink.author){

@@ -4,6 +4,7 @@
     <button type="button" (click)="createDrink()" class="bg-blue-500 hover:bg-blue-700
       text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" *ngIf="user">Opret Drink</button>
   </form>
+  <input type="text" class="mb-2" [(ngModel)]="searchValue" (input)="searchDrinks()" placeholder="Search...">
   <div class="grid grid-cols-4 gap-4 mx-auto">
     <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 border-solid ml-10">
       <img src="../../assets/photo/mojito-cocktail.png" alt="Mojito" class="h-28">
