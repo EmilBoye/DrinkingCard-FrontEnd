@@ -1,9 +1,22 @@
 <body class="bg-gray-300 py-7 min-h-screen">
-  <p class="text-center text-2xl py-3">Cards over Alkoholiske Drinks</p>
+    <div class="py-3">
+      <p class="text-center text-2xl py-3">
+        Cards over non-alkoholiske Drinks
+        <br>
+        <button type="button" (click)="showSearch = !showSearch" class="bg-blue-500 hover:bg-blue-700 text-white text-lg font-mono py-1 px-4 rounded-full justify-items-start">
+          <svg class="w-6 h-6 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <input *ngIf="showSearch" type="text" [(ngModel)]="searchValue" (input)="searchDrinks()" placeholder="Search..." class="px-4 py-2 text-lg rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+      </p>
+    </div>
   <form class="float-right m-7" *ngIf="user">
     <button type="button" (click)="createDrink()" class="bg-blue-500 hover:bg-blue-700
       text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" *ngIf="user">Opret Drink</button>
   </form>
+  <!-- <input type="text" class="mb-2" [(ngModel)]="searchValue" (input)="searchDrinks()" placeholder="Search..."> -->
   <div class="grid grid-cols-4 gap-4 mx-auto">
     <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 border-solid ml-10">
       <img src="../../assets/photo/mojito-cocktail.png" alt="Mojito" class="h-28">
