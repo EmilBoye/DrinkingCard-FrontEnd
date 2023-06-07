@@ -16,6 +16,7 @@ import { LoginComponent } from '../login/login.component';
 export class AlcoholComponent implements OnInit {
   drinks: Alcohol[] = [];
   searchValue: string = '';
+  showSearch: boolean = false;
 
   user: HeaderComponent[] = [];
   userLogin: LoginComponent;
@@ -31,6 +32,7 @@ export class AlcoholComponent implements OnInit {
 
     alert("Denne side er kun for personer over 18 år.");
   }
+  
 
   createDrink():void{
     //Hvis brugeren er logget ind får man tilladelse her til at gå videre
@@ -53,6 +55,9 @@ export class AlcoholComponent implements OnInit {
     this.alcoholService.deleteDrink(drinkId).subscribe(a=> {
       console.log(drinkId);
     });
+  }
+  showSearchValue(): void {
+    this.showSearch = true;
   }
   searchDrinks(): void {
     this.alcoholService.getAllDrinks().subscribe(drinks => {

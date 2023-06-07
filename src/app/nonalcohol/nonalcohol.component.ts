@@ -11,6 +11,7 @@ import { HttpService } from '../service/httpservice.service';
 export class NonalcoholComponent implements OnInit {
   zeroDrink: NonAlcohol[] = [];
   searchValue: string = '';
+  showSearch: boolean = false;
   constructor(private zeroAlcoholService:HttpService ,private router:Router) { }
 
   ngOnInit(): void {
@@ -44,6 +45,9 @@ export class NonalcoholComponent implements OnInit {
     this.zeroAlcoholService.deleteZeroDrink(drinkId).subscribe(a=> {
       console.log(drinkId);
     });
+  }
+  showSearchValue(): void {
+    this.showSearch = true;
   }
   searchDrinks(): void {
     this.zeroAlcoholService.getAllZeroDrinks().subscribe(drinks => {
