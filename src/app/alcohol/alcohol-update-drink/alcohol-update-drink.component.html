@@ -7,14 +7,6 @@
   <br>
   <form #drinkForm="ngForm" class="justify-center">
     <div class="mb-3">
-      <label class="form-label">Id</label>
-      <input type="text" class="form-control" name="id" [(ngModel)]="updateDrink.id">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Oprettet af</label>
-      <input type="text" class="form-input" name="author" [(ngModel)]="updateDrink.author">
-    </div>
-    <div class="mb-3">
       <label class="form-label">Titel</label>
       <input type="text" class="form-input" name="title" [(ngModel)]="updateDrink.title">
     </div>
@@ -38,7 +30,7 @@
       <input type="text" class="form-input" name="alcoholtype" [(ngModel)]="drink.alcoholType">
     </div> -->
     <button class="bg-blue-500 hover:bg-blue-700
-    text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" (click)="onSubmit()">Opret</button>
+    text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" (click)="onSubmit()">Gem</button>
   </form>
 </div>
 </div>
