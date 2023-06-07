@@ -1,0 +1,44 @@
+<p>create works!</p>
+  <!--Create form-->
+  <div class="bg-gray-300 py-7 min-h-screen">
+  <div class="flex items-center mx-auto justify-center z-50">
+    <div class="bg-white rounded-lg p-6">
+      <h2 class="text-lg font-medium mb-4 text-center">Opret</h2>
+      <form #userForm="ngForm" (ngSubmit)="onCreate()">
+        <div class="mb-4">
+          <label
+            class="block text-gray-700 font-medium mb-2"
+            for="username"
+            >Brugernavn</label>
+          <input
+            class="border border-gray-400 p-2 rounded-lg w-full"
+            type="text"
+            name="username"
+            [(ngModel)]="user.username"
+            placeholder="Brugernavn"/>
+          <div class="text-red-500"></div>
+
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 font-medium mb-2"
+              for="passwordHash">
+              Adgangskode</label>
+            <input
+              class="border border-gray-400 p-2 rounded-lg w-full"
+              type="password"
+              name="passwordhash"
+              [(ngModel)]="user.passwordhash"
+              placeholder="Adgangskode"/>
+          </div>
+          <div class="flex justify-center space-x-4 grid-cols-2">
+            <button
+              class="bg-blue-500 text-white p-2 rounded-lg"
+              (click)="onSubmitCreate()">
+              Opret
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

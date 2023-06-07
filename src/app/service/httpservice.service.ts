@@ -19,8 +19,8 @@ export class HttpService {
   getAllUsers(): Observable<User[]>{
     return this.http.get<User[]>(this.apiBaseUrl + '/api/User');
   }
-  getUserById(id: number): Observable<User[]>{
-    return this.http.get<User[]>(this.apiBaseUrl + '/api/User/' + id);
+  getUserById(id: number): Observable<User>{
+    return this.http.get<User>(this.apiBaseUrl + '/api/User/' + id);
   }
   postUser(userinfo:any): Observable<User[]>{
     return this.http.post<User[]>(this.apiBaseUrl + '/api/User/', userinfo);
@@ -33,15 +33,15 @@ export class HttpService {
   }
 
 
-  //Alkohol CRUD
+  //Alcohol CRUD
   getAllDrinks():Observable<Alcohol[]>{
     return this.http.get<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/');
   }
   getDrinkById(id: number): Observable<Alcohol[]>{
     return this.http.get<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id);
   }
-  postDrink(drinkinfo:any): Observable<Alcohol[]>{
-    return this.http.post<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/', drinkinfo);
+  postDrink(alcoinfo:any): Observable<Alcohol[]>{
+    return this.http.post<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/', alcoinfo);
   }
   updateDrink(id:number, updateDrink: Alcohol): Observable<Alcohol[]>{
     return this.http.put<Alcohol[]>(this.apiBaseUrl + '/api/Alcohol/' + id, updateDrink);
@@ -49,7 +49,6 @@ export class HttpService {
   deleteDrink(id:number): Observable<Alcohol>{
     return this.http.delete<Alcohol>(this.apiBaseUrl + '/api/Alcohol/' + id);
   }
-
 
   //Alkoholfri CRUD
   getAllZeroDrinks():Observable<NonAlcohol[]>{
@@ -62,7 +61,7 @@ export class HttpService {
     return this.http.post<NonAlcohol[]>(this.apiBaseUrl + '/api/NonAlcohol/', drinkinfo);
   }
   updateZeroDrink(id:number, updateDrink:NonAlcohol):Observable<NonAlcohol[]>{
-    return this.http.put<NonAlcohol[]>(this.apiBaseUrl + '/api/NonAlcohol' + id, updateDrink);
+    return this.http.put<NonAlcohol[]>(this.apiBaseUrl + '/api/NonAlcohol/' + id, updateDrink);
   }
   deleteZeroDrink(id:number) : Observable<NonAlcohol[]>{
     return this.http.delete<NonAlcohol[]>(this.apiBaseUrl + '/api/NonAlcohol/' + id);

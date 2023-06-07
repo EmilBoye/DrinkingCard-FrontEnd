@@ -1,0 +1,48 @@
+<div class="bg-gray-300 py-7 min-h-screen">
+  <div class="flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6">
+      <h2 class="text-lg font-medium mb-4 text-center">Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="mb-4">
+          <label
+            class="block text-gray-700 font-medium mb-2"
+            for="username"
+            >Brugernavn</label
+          >
+          <input
+            class="border border-gray-400 p-2 rounded-lg w-full"
+            type="text"
+            formControlName="userName"
+            placeholder="Brugernavn"
+          />
+          <div class="text-red-500"></div>
+
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 font-medium mb-2"
+              for="passwordHash"
+            >
+              Adgangskode
+            </label>
+            <input
+              class="border border-gray-400 p-2 rounded-lg w-full"
+              type="password"
+              formControlName="passwordHash"
+              placeholder="Adgangskode"
+            />
+          </div>
+          <div class="flex justify-center space-x-4 grid-cols-2">
+            <button
+              class="bg-blue-500 text-white p-2 rounded-lg"
+              (click)="onSubmitLogin()"
+              [disabled]="loginForm.invalid"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  </div>

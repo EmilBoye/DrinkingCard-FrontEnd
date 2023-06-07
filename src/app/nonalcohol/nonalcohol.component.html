@@ -1,4 +1,22 @@
-<div class="bg-gray-300 py-7 ">
+<div class="bg-gray-300 py-7 min-h-screen">
+  <div class="py-3">
+    <p class="text-center text-2xl py-3">
+      Cards over non-alkoholiske Drinks
+      <br>
+      <button type="button" (click)="showSearch = !showSearch" class="bg-blue-500 hover:bg-blue-700 text-white text-lg font-mono py-1 px-4 rounded-full justify-items-start">
+        <svg class="w-6 h-6 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+      <input *ngIf="showSearch" type="text" [(ngModel)]="searchValue" (input)="searchDrinks()" placeholder="Search..." class="px-4 py-2 text-lg rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+    </p>
+  </div>
+
+  <form class="float-right m-7">
+    <button type="button" (click)="createZeroDrink()" class="bg-blue-500 hover:bg-blue-700 text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center">Opret Drink</button>
+  </form>
+
   <div class="grid grid-cols-4 gap-4">
 <div class="h-72 rounded-lg overflow-hidden shadow-lg px-6 py-4 bg-white shadow-slate-700 ml-10">
   <img src="../../assets/photo/cuba-l.png" alt="Cuba libre" class="h-24">
@@ -34,10 +52,29 @@
       <li> Fyld din kop 1/4 del med valgte saft </li>
       <li> Fyld resternde op med vand </li>
     </p>
+
   </div>
 </div>
-<form class="">
-  <button type="button" class="bg-blue-500 hover:bg-blue-700
-          text-white text-lg font-mono py-1 px-4 rounded-full">Opret Drink</button>
-</form>
+<div *ngFor="let drink of zeroDrink">
+  <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 ml-10">
+    <img src="../../assets/photo/mojito-cocktail.png" alt="Mojito" class="h-24">
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2"> {{ drink.title }}</div>
+      <p class="text-gray-700 text-base">
+        Lavet af: {{drink.author}}
+      </p>
+      <p class="text-gray-700 text-base">
+        <p>{{drink.description}}</p>
+        <p>{{drink.ingredients}}</p>
+        <!-- <li></li>
+        <li></li>
+        <li></li>
+        <li></li> -->
+        <button type="button" *ngIf="userId == drink.authorId" (click)="editZeroDrink(drink.id)" class="bg-blue-500 hover:bg-blue-700
+      text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Rediger Drink</button>
+        <button type="button" *ngIf="userId == drink.authorId" (click)="deleteZeroDrink(drink.id)" class="bg-red-400 hover:bg-red-700
+      text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Slet Drink</button>
+
+    </div>
+  </div>
 

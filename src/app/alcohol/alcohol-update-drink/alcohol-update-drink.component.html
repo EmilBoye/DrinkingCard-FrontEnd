@@ -1,7 +1,5 @@
-<div class="bg-gray-300">
-<p>alcohol-update-drink works!</p>
-<div class="bg-gray-300 justify-center">
-<div class="" *ngIf="updateDrink">
+<div class="bg-gray-300 justify-center min-h-screen">
+<div class="text-center" *ngIf="updateDrink">
   <br>
   <br>
   <h1 class="text-3xl text-center font-mono">Opdater drink</h1>
@@ -9,20 +7,16 @@
   <br>
   <form #drinkForm="ngForm" class="justify-center">
     <div class="mb-3">
-      <label class="form-label">Id</label>
-      <input type="text" class="form-control" name="id" [(ngModel)]="updateDrink.alcoId">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Oprettet af</label>
-      <input type="text" class="form-input" name="author" [(ngModel)]="updateDrink.author">
-    </div>
-    <div class="mb-3">
       <label class="form-label">Titel</label>
       <input type="text" class="form-input" name="title" [(ngModel)]="updateDrink.title">
     </div>
     <div class="mb-3">
       <label class="form-label">Beskrivelse</label>
       <textarea name="description" class="form-control" [(ngModel)]="updateDrink.description"></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Ingredienser</label>
+      <input type="text" class="form-input" name="ingredients" [(ngModel)]="updateDrink.ingredients">
     </div>
     <!-- <div class="mb-3">
       <label class="form-label">Titel</label>
@@ -36,8 +30,8 @@
       <input type="text" class="form-input" name="alcoholtype" [(ngModel)]="drink.alcoholType">
     </div> -->
     <button class="bg-blue-500 hover:bg-blue-700
-    text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" (click)="onSubmit()">Opret</button>
+    text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" (click)="onSubmit()">Gem</button>
   </form>
 </div>
 </div>
-</div>
+

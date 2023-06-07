@@ -24,6 +24,7 @@ export enum AlcoholType{
 export class Alcohol{
   public id:number;
   public author:string;
+  public authorId: number;
   public title:string;
   public description:string;
   public featuredImageUrl:string;
@@ -31,7 +32,6 @@ export class Alcohol{
   public ingredients:string
   public alcoholType:AlcoholType;
   public visible:boolean;
-  //UserId:number;
   public publishDate:Date;
   public updatedDate:Date;
 }
