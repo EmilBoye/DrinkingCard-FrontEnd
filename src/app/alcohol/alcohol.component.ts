@@ -20,10 +20,15 @@ export class AlcoholComponent implements OnInit {
 
   user: HeaderComponent[] = [];
   userLogin: LoginComponent;
+  userId: number;
+
   constructor(private alcoholService:HttpService, private router:Router, private authService:AuthService) { }
 
 
   ngOnInit(): void {
+    this.userId = JSON.parse(localStorage.getItem('User') || '{}');
+    console.log(this.userId);
+
     this.alcoholService.getAllDrinks().subscribe(a => {
       this.drinks = a;
       console.log("Alkohol",a);
@@ -48,7 +53,6 @@ export class AlcoholComponent implements OnInit {
 
   editDrink(id:any): void {
     this.router.navigate(['alkohol/opdater/',id])
-
   }
 
   deleteDrink(drinkId:any): void{

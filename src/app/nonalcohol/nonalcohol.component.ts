@@ -13,25 +13,19 @@ export class NonalcoholComponent implements OnInit {
   zeroDrink: NonAlcohol[] = [];
   searchValue: string = '';
   showSearch: boolean = false;
+
+  userId: number;
+
   constructor(private zeroAlcoholService:HttpService ,private router:Router, private authService:AuthService) { }
 
   ngOnInit(): void {
+    this.userId = JSON.parse(localStorage.getItem('User') || '{}');
+    console.log(this.userId);
+
     this.zeroAlcoholService.getAllZeroDrinks().subscribe(a => {
       this.zeroDrink = a;
     });
   }
-  // zeroDrinks: any = {
-  //   id: 0,
-  //   author: '',
-  //   title: '',
-  //   description: '',
-  //   featuredImageUrl: '',
-  //   ingredients: '',
-  //   visible: false,
-  //   publishDate: new Date(),
-  //   updatedDate: new Date()
-  // }
-
 
 
 

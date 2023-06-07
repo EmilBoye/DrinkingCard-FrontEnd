@@ -69,17 +69,17 @@
           Lavet af: {{drink.author}}
         </p>
         <p class="text-gray-700 text-base">
-          <li>{{drink.description}}</li>
-          <li>{{drink.ingredients}}</li>
+          <p>{{drink.description}}</p>
+          <p>{{drink.ingredients}}</p>
           <li></li>
           <li></li>
           <li></li>
           <li></li>
-          <button type="button" (click)="editDrink(drink.id)" class="bg-blue-500 hover:bg-blue-700
+          <button type="button" *ngIf="userId == drink.authorId" (click)="editDrink(drink.id)" class="bg-blue-500 hover:bg-blue-700
         text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Rediger Drink</button>
-          <button type="button" (click)="deleteDrink(drink.id)" class="bg-red-400 hover:bg-red-700
+          <button type="button" *ngIf="userId == drink.authorId" (click)="deleteDrink(drink.id)" class="bg-red-400 hover:bg-red-700
         text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Slet Drink</button>
-        </p>
+
       </div>
     </div>
   </div>
