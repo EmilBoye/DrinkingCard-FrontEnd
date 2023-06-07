@@ -14,6 +14,7 @@ export class AlcoholAddDrinkComponent implements OnInit {
   drink: any = {
     id: 0,
     author: '',
+    authorId: 0,
     title: '',
     description: '',
     featuredImageUrl: '',
@@ -32,10 +33,6 @@ export class AlcoholAddDrinkComponent implements OnInit {
       // this.addIngredient();
       this.alcoholService.postDrink(this.drink).subscribe((createdDrink:any) => {
         this.drink = createdDrink;
-        const createdDrinkId: number = createdDrink.id;
-
-
-        this.drink = createdDrinkId;
       });
     }
     else{

@@ -56,4 +56,14 @@ export class AlcoholComponent implements OnInit {
       console.log(drinkId);
     });
   }
+  showSearchValue(): void {
+    this.showSearch = true;
+  }
+  searchDrinks(): void {
+    this.alcoholService.getAllDrinks().subscribe(drinks => {
+      this.drinks = drinks.filter(drink =>
+        drink.ingredients.toLowerCase().includes(this.searchValue.toLowerCase())
+      );
+    });
+  }
 }

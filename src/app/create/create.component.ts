@@ -16,14 +16,12 @@ export class CreateComponent implements OnInit {
   showCreateModal = false;
   showLoginModal = false;
 
-  user:User = {
+  user:any = {
     id: 0,
     roleid: 0,
     role: undefined,
     username: '',
     passwordhash: '',
-    alcohol: new Alcohol,
-    nonalcohol: new NonAlcohol
   }
   constructor(private service:HttpService, private formBuilder:FormBuilder) { }
 
