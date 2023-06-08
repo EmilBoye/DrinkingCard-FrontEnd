@@ -17,6 +17,7 @@ export class AlcoholUpdateDrinkComponent implements OnInit {
   updateDrink: any = {
     id: this.actRoute.snapshot.params['id'],
     author: '',
+    authorId: 0,
     title: '',
     description: '',
     featuredImageUrl: '',

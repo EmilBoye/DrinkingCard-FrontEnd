@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { RoleType } from '../models/Role-model';
+import { Role, RoleType } from '../models/Role-model';
+import { User } from '../models/User-model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,22 +8,20 @@ import { RoleType } from '../models/Role-model';
 export class AuthService {
 
   private loggedInStatus = false;
-
   constructor() { }
 
-  login(username: string, password: string) {
+  login(username: string, password: string): void {
     // Logic for validating user credentials and setting loggedInStatus to true if valid
     this.loggedInStatus = true;
   }
 
-  logout() {
+  logout() : void {
     // Logic for logging out user and setting loggedInStatus to false
     this.loggedInStatus = false;
   }
 
-  isLoggedIn() {
+  isLoggedIn() : boolean {
     return this.loggedInStatus;
+
   }
-
-
 }

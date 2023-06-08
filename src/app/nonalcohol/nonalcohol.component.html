@@ -52,7 +52,7 @@
       <li> Fyld din kop 1/4 del med valgte saft </li>
       <li> Fyld resternde op med vand </li>
     </p>
-    
+
   </div>
 </div>
 <div *ngFor="let drink of zeroDrink">
@@ -70,11 +70,11 @@
         <li></li>
         <li></li>
         <li></li> -->
-        <button type="button" (click)="editZeroDrink(drink.id)" class="bg-blue-500 hover:bg-blue-700
+        <button type="button" *ngIf="userId == drink.authorId" (click)="editZeroDrink(drink.id)" class="bg-blue-500 hover:bg-blue-700
       text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Rediger Drink</button>
-        <button type="button" (click)="deleteZeroDrink(drink.id)" class="bg-red-400 hover:bg-red-700
+        <button type="button" *ngIf="userId == drink.authorId" (click)="deleteZeroDrink(drink.id)" class="bg-red-400 hover:bg-red-700
       text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Slet Drink</button>
-      
+
     </div>
   </div>
 
