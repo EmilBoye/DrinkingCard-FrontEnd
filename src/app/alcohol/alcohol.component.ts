@@ -39,7 +39,7 @@ export class AlcoholComponent implements OnInit {
   }
 
 
-  createDrink():void{
+  createDrink():void {
     //Hvis brugeren er logget ind får man tilladelse her til at gå videre
     if(this.authService.isLoggedIn()) {
      this.router.navigate(['alkohol/tilføj']);
@@ -55,7 +55,7 @@ export class AlcoholComponent implements OnInit {
     this.router.navigate(['alkohol/opdater/',id])
   }
 
-  deleteDrink(drinkId:any): void{
+  deleteDrink(drinkId:any): void {
     this.alcoholService.deleteDrink(drinkId).subscribe(a=> {
       console.log(drinkId);
     });

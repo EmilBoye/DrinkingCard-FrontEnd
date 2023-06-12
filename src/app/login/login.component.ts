@@ -1,4 +1,4 @@
-  import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit, ViewChild } from '@angular/core';
   import { User } from '../models/User-model';
   import { Alcohol } from '../models/Alcohol-model';
   import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -7,6 +7,7 @@
   import { RoleType } from '../models/Role-model';
   import { NonAlcohol } from '../models/NonAlcohol-model';
   import { Router } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
 
   @Component({
     selector: 'app-login',
@@ -72,14 +73,9 @@
         this.loginForm.reset();
         window.localStorage.setItem('User',userFilter[0].id.toString());
 
-        alert("Du er nu logget ind");
 
+        alert("Du er nu logget ind");
         this.userChecked = false;
       }
-    }
-    onLogout():void{
-      this.authService.logout();
-      this.userChecked = false; // Tilføj denne linje
-      this.router.navigate(['/login']);
     }
   }

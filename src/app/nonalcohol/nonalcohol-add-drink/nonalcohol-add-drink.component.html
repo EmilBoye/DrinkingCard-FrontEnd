@@ -27,7 +27,7 @@
         </div>
 
         <div class="mb-3">
-          <input type="file" name="featuredimageurl" [(ngModel)]="zeroDrink.featuredImageUrl">
+          <input type="file" accept=".jpg,.png" (change)="onSubmitFeaturedImage($event)" class="center-input ">
         </div>
         <button class="bg-blue-500 hover:bg-blue-700
         text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" (click)="createDrink()">Opret</button>

@@ -48,4 +48,14 @@ export class NonalcoholAddDrinkComponent implements OnInit {
       alert("Titlen skal være mere eller lig med 5 karakter")
     }
   }
+
+  onSubmitFeaturedImage(event: any) {
+    if (event.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.zeroDrink.featuredImageUrl = e.target.result;
+      }
+    }
+  };
 }
