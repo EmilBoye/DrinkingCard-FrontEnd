@@ -23,7 +23,7 @@
       <input type="text" class="form-input" name="title" [(ngModel)]="updateDrink.title">
     </div> -->
     <div class="mb-3">
-      <input type="file" name="featuredimageurl" [(ngModel)]="updateDrink.featuredImageUrl">
+      <input type="file" accept=".jpg,.png" (change)="onSubmitFeaturedImage($event)" class="center-input ">
     </div>
     <!-- <div class="mb-3 justify-center">
       <label class="form-label">Type af alkohol</label>

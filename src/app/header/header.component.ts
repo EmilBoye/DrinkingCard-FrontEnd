@@ -13,8 +13,17 @@ import { NonAlcohol } from '../models/NonAlcohol-model';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  userId: number;
   constructor(private service:HttpService, private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
+    this.userId = JSON.parse(localStorage.getItem('User')|| 'null');
+  }
+
+  onLogout(): void {
+    localStorage.clear();
+    console.log(localStorage.getItem('User')|| 'null');
+    this.ngOnInit();
   }
 }

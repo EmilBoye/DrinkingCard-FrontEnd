@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Alcohol } from '../models/Alcohol-model';
 import { NonAlcohol } from '../models/NonAlcohol-model';
 import { User } from '../models/User-model';
+import { Rating } from '../models/Rating-model';
 
 @Injectable({
   providedIn: 'root'
@@ -65,5 +66,16 @@ export class HttpService {
   }
   deleteZeroDrink(id:number) : Observable<NonAlcohol[]>{
     return this.http.delete<NonAlcohol[]>(this.apiBaseUrl + '/api/NonAlcohol/' + id);
+  }
+
+  //Kommentar CRUD
+  getAllComments():Observable<Rating[]>{
+    return this.http.get<Rating[]>(this.apiBaseUrl + '/api/Rating/');
+  }
+  postComment(comment:any):Observable<Rating[]>{
+    return this.http.post<Rating[]>(this.apiBaseUrl + '/api/Rating/', comment);
+  }
+  updateComment(id:number, updateComment:Rating):Observable<Rating[]>{
+    return this.http.put<Rating[]>(this.apiBaseUrl + '/api/Rating/' + id, updateComment);
   }
 }
