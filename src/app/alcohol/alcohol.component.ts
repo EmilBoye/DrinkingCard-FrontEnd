@@ -26,7 +26,7 @@ export class AlcoholComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.userId = JSON.parse(localStorage.getItem('User') || '{}');
+    this.userId = JSON.parse(localStorage.getItem('User') || 'null');
     console.log(this.userId);
 
     this.alcoholService.getAllDrinks().subscribe(a => {
