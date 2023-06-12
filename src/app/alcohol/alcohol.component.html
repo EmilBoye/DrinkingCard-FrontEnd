@@ -71,10 +71,6 @@
         <p class="text-gray-700 text-base">
           <p>{{drink.description}}</p>
           <p>{{drink.ingredients}}</p>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
           <button type="button" *ngIf="userId == drink.authorId" (click)="editDrink(drink.id)" class="bg-blue-500 hover:bg-blue-700
         text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Rediger Drink</button>
           <button type="button" *ngIf="userId == drink.authorId" (click)="deleteDrink(drink.id)" class="bg-red-400 hover:bg-red-700
