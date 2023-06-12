@@ -8,11 +8,12 @@
         <a routerLink="/hjem"
           ><img src="../../assets/photo/image.png" alt="Logo" class="h-8"
         /></a>
-        <a routerLink="/hjem" routerLinkActive="active">Hjem</a>
-        <a routerLink="/alkohol" routerLinkActive="active">Alkohol</a>
-        <a routerLink="/alkoholfri" routerLinkActive="active">Alkohol Fri</a>
-        <a routerLink="/login" routerLinkActive="active">Login</a>
+        <a (click)="ngOnInit()" routerLink="/hjem" routerLinkActive="active">Hjem</a>
+        <a (click)="ngOnInit()" routerLink="/alkohol" routerLinkActive="active">Alkohol</a>
+        <a (click)="ngOnInit()" routerLink="/alkoholfri" routerLinkActive="active">Alkohol Fri</a>
+        <a *ngIf="!userId" routerLink="/login" routerLinkActive="active">Login</a>
         <a routerLink="/opret" routerLinkActive="active">Opret</a>
+        <a *ngIf="userId" routerLink="/login" (click)="onLogout()" routerLinkActive="active">Log ud</a>
 
     </div>
     </div>
