@@ -57,7 +57,7 @@
 </div>
 <div *ngFor="let drink of zeroDrink">
   <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 ml-10">
-    <img src="../../assets/photo/mojito-cocktail.png" alt="Mojito" class="h-24">
+    <img [src]="drink.featuredImageUrl" alt="Mojito" class="h-24">
     <div class="px-6 py-4">
       <div class="font-bold text-xl mb-2"> {{ drink.title }}</div>
       <p class="text-gray-700 text-base">
