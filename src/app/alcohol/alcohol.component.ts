@@ -7,6 +7,7 @@ import { AlcoholAddDrinkComponent } from './alcohol-add-drink/alcohol-add-drink.
 import { HeaderComponent } from '../header/header.component';
 import { AuthService } from '../service/authservice';
 import { LoginComponent } from '../login/login.component';
+import { Rating } from '../models/Rating-model';
 
 @Component({
   selector: 'app-alcohol',
@@ -19,7 +20,6 @@ export class AlcoholComponent implements OnInit {
   showSearch: boolean = false;
 
   user: HeaderComponent[] = [];
-  userLogin: LoginComponent;
   userId: number;
 
   constructor(private alcoholService:HttpService, private router:Router, private authService:AuthService) { }
@@ -60,6 +60,7 @@ export class AlcoholComponent implements OnInit {
       console.log(drinkId);
     });
   }
+
   showSearchValue(): void {
     this.showSearch = true;
   }

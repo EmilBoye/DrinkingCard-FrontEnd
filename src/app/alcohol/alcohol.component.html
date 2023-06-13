@@ -64,17 +64,18 @@
     <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 ml-10">
       <img [src]="drink.featuredImageUrl" class="h-24">
       <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2"> {{ drink.title }}</div>
+        <div class="font-bold text-xl mb-2"> Titel: {{ drink.title }}</div>
         <p class="text-gray-700 text-base">
-          Lavet af: {{drink.author}}
+          Lavet af: {{drink.author}} <br>
         </p>
         <p class="text-gray-700 text-base">
-          <p>{{drink.description}}</p>
-          <p>{{drink.ingredients}}</p>
+          <p>Beskrivelse: {{drink.description}}</p><br>
+          <p>Ingredienser: {{drink.ingredients}}</p><br>
+          <p>Dato: {{drink.publishDate}}</p>
           <button type="button" *ngIf="userId == drink.authorId" (click)="editDrink(drink.id)" class="bg-blue-500 hover:bg-blue-700
-        text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Rediger Drink</button>
+          text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Rediger Drink</button>
           <button type="button" *ngIf="userId == drink.authorId" (click)="deleteDrink(drink.id)" class="bg-red-400 hover:bg-red-700
-        text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Slet Drink</button>
+          text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Slet Drink</button>
 
       </div>
     </div>
