@@ -12,50 +12,18 @@ import { HttpService } from '../service/httpservice.service';
 export class FrontpageComponent implements OnInit {
 
   drinks: Alcohol[] = [];
-  drinkszero: NonAlcohol[] = [];
+  drinkszero : NonAlcohol[] = [];
   users: User[] = [];
 
-  constructor(private alcoholService: HttpService) { }
+  constructor(private alcoholService:HttpService) { }
 
   ngOnInit(): void {
-    this.alcoholService.getAllDrinks().subscribe(alcoholicDrinks => {
-      this.drinks = alcoholicDrinks;
-      console.log(alcoholicDrinks);
-      this.shuffleAndSliceDrinks();
+     this.alcoholService.getAllDrinks().subscribe(data => {
+      this.drinks = data.sort(() => Math.random() - Math.random()).slice(0, 3);
     });
-
-    this.alcoholService.getAllZeroDrinks().subscribe(nonAlcoholicDrinks => {
-      this.drinkszero = nonAlcoholicDrinks;
-      console.log(nonAlcoholicDrinks);
-      this.shuffleAndSliceDrinks();
+    this.alcoholService.getAllZeroDrinks().subscribe(data => {
+      this.drinkszero = data.sort(() => Math.random() - Math.random()).slice(0, 3);
     });
-  }
-
-  shuffleAndSliceDrinks(): void {
-    if (this.drinks.length > 0 && this.drinkszero.length > 0) {
-      this.drinks = this.shuffleArray(this.drinks).slice(0, 3);
-      this.drinkszero = this.shuffleArray(this.drinkszero).slice(0, 3);
-    }
-  }
-
-  shuffleArray(array: any[]): any[] {
-    let currentIndex = array.length;
-    let temporaryValue;
-    let randomIndex;
-
-    // While there remain elements to shuffle...
-    while (currentIndex !== 0) {
-
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
+      
   }
 }
