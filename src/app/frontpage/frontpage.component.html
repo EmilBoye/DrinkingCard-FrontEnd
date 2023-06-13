@@ -1,44 +1,41 @@
 <div class="bg-gray-300 text-center py-7 min-h-screen">
-  <!-- <div id="sliderDrinks" class="carousel slide relative" data-bs-ride="carousel"> -->
-
-    <p class="text-2xl font-mono underline">Anbefalet Drinks</p>
-  <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
-    <button
-    type="button"
-    data-bs-target="#sliderDrinks"
-    data-bs-slide-to="0"
-    class="active"
-    aria-current="true"
-    aria-label="Slide 1">
-    </button>
+  <div class="py-3">
+    <p class="text-2xl font-mono underline">Anbefalede Drinks</p>
   </div>
+  <div class="py-3">
+    <p class="text-2xl font-mono underline">Alkoholiske drinks</p>
+  </div>
+
+  <div class="grid grid-cols-4 gap-4">
+    <!-- Alcoholic Drinks -->
     <div *ngFor="let drink of drinks">
-      <!-- <h1>ID: {{drink.alcoId}}</h1> -->
-      <h1>Id: {{drink.id}}</h1>
-      <h1>Udgivet af: {{drink.author}}</h1>
-      <h1>Titel: {{drink.title}}</h1>
-      <h1>Styrke: {{drink.strength}}</h1>
-      <h1>Beskrivelse: {{drink.description}}</h1>
-      <h1>Ingredienser: {{drink.ingredients}}</h1>
-      <h1>Alkohol Type: {{drink.alcoholType}}</h1>
-      <h1>Synlighed: {{drink.visible}}</h1>
-      <!-- <h1>Bruger: {{drink.user}}</h1> -->
-      <h1>Slået op: {{drink.publishDate}}</h1>
-      <h1>Opdateret: {{drink.updatedDate}}</h1>
-
-      <p>Her har jeg prøvet med User klassen</p>
-
-      <div *ngFor="let user of users">
-        <h1>user: {{user.username}}</h1>
-        <h1>password: {{user.passwordhash}}</h1>
-        <h1>userid {{user.id}}</h1>
-        <h1>roleId {{user.roleid}}</h1>
-        <h1>role {{user.role}}</h1>
+      <div class="rounded-lg shadow-lg px-6 py-4 bg-white shadow-slate-700 overflow-auto h-72 ml-10">
+        <img [src]="drink.featuredImageUrl" alt="Mojito" class="h-24">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{{ drink.title }}</div>
+          <p class="text-gray-700 text-base">Lavet af: {{ drink.author }}</p>
+          <p class="text-gray-700 text-base">{{ drink.description }}</p>
+          <p class="text-gray-700 text-base">{{ drink.ingredients }}</p>
+        </div>
       </div>
-<!-- <div *ngFor="let drinks of alcoholDrinks">
-  <h1>{{drinks}}</h1>
-</div> -->
     </div>
   </div>
-<!-- </div> -->
-<!-- </div> -->
+    <div class="py-3">
+      <p class="text-2xl font-mono underline">Non-Alkoholiske drinks</p>
+    </div>
+
+    <!-- Non-Alcoholic Drinks -->
+    <div class="grid grid-cols-4 gap-4">
+    <div *ngFor="let drink of drinkszero">
+      <div class="rounded-lg shadow-lg px-6 py-4 bg-white shadow-slate-700 overflow-auto h-72 ml-10">
+        <img [src]="drink.featuredImageUrl" class="h-24">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{{ drink.title }}</div>
+          <p class="text-gray-700 text-base">Lavet af: {{ drink.author }}</p>
+          <p class="text-gray-700 text-base">{{ drink.description }}</p>
+          <p class="text-gray-700 text-base">{{ drink.ingredients }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
