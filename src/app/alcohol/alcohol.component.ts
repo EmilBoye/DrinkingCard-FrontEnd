@@ -17,10 +17,14 @@ import { Rating } from '../models/Rating-model';
 export class AlcoholComponent implements OnInit {
   drinks: Alcohol[] = [];
   searchValue: string = '';
+  newComment:string = '';
   showSearch: boolean = false;
 
+  ratings: Rating[];
+  ratingComment:Rating;
   user: HeaderComponent[] = [];
   userId: number;
+  selectedDrinkId: number;
 
   constructor(private alcoholService:HttpService, private router:Router, private authService:AuthService) { }
 
@@ -32,9 +36,13 @@ export class AlcoholComponent implements OnInit {
     this.alcoholService.getAllDrinks().subscribe(a => {
       this.drinks = a;
       console.log("Alkohol",a);
+      this.alcoholService.getAllComments().subscribe(x=>{
+        this.ratings = x;
+        console.log("comment",x);
 
+      });
     });
-
+    this.ratingComment = new Rating();
     alert("Denne side er kun for personer over 18 år.");
   }
 
@@ -71,4 +79,17 @@ export class AlcoholComponent implements OnInit {
       );
     });
   }
+  postComment(drinkID:number):void{
+    this.ratingComment.drinkId = drinkID;
+    this.alcoholService.postComment(this.ratingComment).subscribe(x=>{
+      const rating = new Rating();
+      rating.drinkId = drinkID;
+      console.log(x);
+    });
+  }
+
+  selectDrink(drinkId:number):void{
+    this.selectedDrinkId = drinkId;
+  }
+
 }

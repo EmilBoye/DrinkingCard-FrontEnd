@@ -5,4 +5,5 @@ export class Rating{
   public user:User;
   public comment:string;
   public publishedComment:Date;
+  public drinkId:number;
 }
