@@ -13,13 +13,12 @@ export class NonalcoholComponent implements OnInit {
   zeroDrink: NonAlcohol[] = [];
   searchValue: string = '';
   showSearch: boolean = false;
-
   userId: number;
 
   constructor(private zeroAlcoholService:HttpService ,private router:Router, private authService:AuthService) { }
 
   ngOnInit(): void {
-    // Linje 23 henter data fra localStorage og ser om userId er sammen med key valuen 'User'.
+    // Linje 22 henter data fra localStorage og ser om userId er sammen med key valuen 'User'.
     this.userId = JSON.parse(localStorage.getItem('User') || '{}');
     console.log(this.userId);
 
