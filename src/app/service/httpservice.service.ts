@@ -78,4 +78,7 @@ export class HttpService {
   updateComment(id:number, updateComment:Rating):Observable<Rating[]>{
     return this.http.put<Rating[]>(this.apiBaseUrl + '/api/Rating/' + id, updateComment);
   }
+  deleteComment(id:number):Observable<Rating[]>{
+    return this.http.delete<Rating[]>(this.apiBaseUrl + '/api/Rating' + id);
+  }
 }
