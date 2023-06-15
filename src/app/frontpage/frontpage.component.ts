@@ -13,7 +13,6 @@ export class FrontpageComponent implements OnInit {
 
   drinks: Alcohol[] = [];
   drinkszero : NonAlcohol[] = [];
-  users: User[] = [];
 
   constructor(private alcoholService:HttpService) { }
 
