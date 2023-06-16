@@ -12,76 +12,41 @@
         <input *ngIf="showSearch" type="text" [(ngModel)]="searchValue" (input)="searchDrinks()" placeholder="Search..." class="px-4 py-2 text-lg rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
       </p>
     </div>
-  <form class="float-right m-7" *ngIf="user">
+  <form class="float-right m-7" *ngIf="users">
     <button type="button" (click)="createDrink()" class="bg-blue-500 hover:bg-blue-700
-      text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" *ngIf="user">Opret Drink</button>
+      text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" *ngIf="users">Opret Drink</button>
   </form>
   <!-- <input type="text" class="mb-2" [(ngModel)]="searchValue" (input)="searchDrinks()" placeholder="Search..."> -->
   <div class="grid grid-cols-4 gap-4 mx-auto">
-    <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 border-solid ml-10">
-      <img src="../../assets/photo/mojito-cocktail.png" alt="Mojito" class="h-28">
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">  Mojito</div>
-        <p class="text-gray-700 text-base">
-          <li> 5 cl lys rom.</li>
-          <li>1 tsk sukker.</li>
-          <li>1 håndfuld frisk mynte.</li>
-          <li>1 lime, skåret i både.</li>
-          <li>2 dl isterninger der er knuste.</li>
-          <li>Danskvand til at toppe med.</li>
-        </p>
-      </div>
-    </div>
-    <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 ml-8">
-      <img src="../../assets/photo/filur-cocktailcompany.png" alt="Mojito" class="h-28">
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">  Filur</div>
-        <p class="text-gray-700 text-base">
-          <li> 5 cl lys rom.</li>
-          <li>1 tsk sukker.</li>
-          <li>1 håndfuld frisk mynte.</li>
-          <li>1 lime, skåret i både.</li>
-          <li>2 dl isterninger der er knuste.</li>
-          <li>Danskvand til at toppe med.</li>
-        </p>
-      </div>
-    </div>
-    <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 ml-8">
-      <img src="../../assets/photo/mojito-cocktail.png" alt="Mojito" class="h-24">
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">  Mojito</div>
-        <p class="text-gray-700 text-base">
-          <li> 5 cl lys rom.</li>
-          <li>1 tsk sukker.</li>
-          <li>1 håndfuld frisk mynte.</li>
-          <li>1 lime, skåret i både.</li>
-          <li>2 dl isterninger der er knuste.</li>
-          <li>Danskvand til at toppe med.</li>
-        </p>
-      </div>
-    </div>
     <div *ngFor="let drink of drinks">
     <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 ml-10">
-      <img [src]="drink.featuredImageUrl" class="h-24">
+      <img [src]="drink.featuredImageUrl" alt="NO PHOTO" class="h-24">
       <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2"> {{ drink.title }}</div>
+        <div class="font-bold text-xl mb-2"> Titel: {{ drink.title }}</div>
         <p class="text-gray-700 text-base">
-          Lavet af: {{drink.author}}
+          Lavet af: {{drink.author}} <br>
         </p>
         <p class="text-gray-700 text-base">
-          <p>{{drink.description}}</p>
-          <p>{{drink.ingredients}}</p>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <p>Beskrivelse: {{drink.description}}</p><br>
+          <p>Ingredienser: {{drink.ingredients}}</p><br>
+          <p>Dato: {{drink.publishDate}}</p>
           <button type="button" *ngIf="userId == drink.authorId" (click)="editDrink(drink.id)" class="bg-blue-500 hover:bg-blue-700
-        text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Rediger Drink</button>
+          text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Ændre</button>
           <button type="button" *ngIf="userId == drink.authorId" (click)="deleteDrink(drink.id)" class="bg-red-400 hover:bg-red-700
-        text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Slet Drink</button>
+          text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Slet</button><br>
 
+          <div *ngFor="let rating of ratings">
+            <div *ngFor="let user of users">
+              <p *ngIf="rating.drinkId === drink.id && rating.userId === user.id">{{ rating.userId === user.id ? user.username: 'null' }}: {{ rating.comment }}</p>
+            </div>
+          </div>
+
+          <textarea *ngIf="userId" [(ngModel)]="ratingComment.comment" placeholder="Skriv en kommentar"></textarea>
+          <button *ngIf="userId" type="button" (click)="postComment(drink.id)" class="bg-blue-500 hover:bg-blue-700 text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">
+            Kommenter
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </body>
