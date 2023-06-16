@@ -39,8 +39,7 @@ export class NonalcoholComponent implements OnInit {
         this.zeroAlcoholService.getAllUsers().subscribe((x) =>{
           this.users = x;
           console.log("users",x);
-
-        })
+        });
       });
     });
   }
@@ -82,6 +81,8 @@ export class NonalcoholComponent implements OnInit {
     this.ratingComment.user = this.userName;
 
     this.zeroAlcoholService.postComment(this.ratingComment).subscribe((x)=>{
+      console.log(x);
+
       this.zeroAlcoholService.getAllComments().subscribe((x)=>{
         this.ratings = x;
       });

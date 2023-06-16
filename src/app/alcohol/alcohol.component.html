@@ -41,7 +41,7 @@
             </div>
           </div>
 
-          <textarea *ngIf="userId" [(ngModel)]="ratingComment.comment" placeholder="Skriv en kommentar"></textarea>
+          <textarea *ngIf="userId" [(ngModel)]="ratingComment.comment" placeholder="Skriv en kommentar" class="border border-black p-2"></textarea>
           <button *ngIf="userId" type="button" (click)="postComment(drink.id)" class="bg-blue-500 hover:bg-blue-700 text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">
             Kommenter
           </button>
