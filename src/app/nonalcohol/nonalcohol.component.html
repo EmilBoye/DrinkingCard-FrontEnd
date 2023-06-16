@@ -26,17 +26,17 @@
   <div class="rounded-lg shadow-lg  px-6 py-4  bg-white shadow-slate-700 overflow-auto h-72 ml-10">
     <img [src]="drink.featuredImageUrl" alt="NO PHOTO" class="h-24">
     <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2"> {{ drink.title }}</div>
+      <div class="font-bold text-xl mb-2"> Titel: {{ drink.title }}</div>
       <p class="text-gray-700 text-base">
         Lavet af: {{drink.author}}
       </p>
       <p class="text-gray-700 text-base">
-        <p>{{drink.description}}</p>
-        <p>{{drink.ingredients}}</p>
+        <p>Beskrivelse: {{drink.description}}</p><br>
+        <p>Ingredienser: {{drink.ingredients}}</p><br>
         <button type="button" *ngIf="userId == drink.authorId" (click)="editZeroDrink(drink.id)" class="bg-blue-500 hover:bg-blue-700
       text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Rediger Drink</button>
         <button type="button" *ngIf="userId == drink.authorId" (click)="deleteZeroDrink(drink.id)" class="bg-red-400 hover:bg-red-700
-      text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Slet Drink</button>
+      text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Slet Drink</button><br>
       <div *ngFor="let rating of ratings">
         <div *ngFor="let user of users">
           <p *ngIf="rating.drinkId === drink.id && rating.userId === user.id">{{ rating.userId === user.id ? user.username: 'null' }}: {{ rating.comment }}</p>
