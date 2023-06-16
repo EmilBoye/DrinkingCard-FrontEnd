@@ -3,22 +3,22 @@
     <p class="text-center text-2xl py-3">
       Cards over non-alkoholiske Drinks
       <br>
-      <button type="button" (click)="showSearch = !showSearch" 
+      <button type="button" (click)="showSearch = !showSearch"
       class="bg-blue-500 hover:bg-blue-700 text-white text-lg font-mono py-1 px-4 rounded-full justify-items-start">
-        <svg class="w-6 h-6 inline-block" xmlns="http://www.w3.org/2000/svg" 
+        <svg class="w-6 h-6 inline-block" xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
       </button>
-      <input *ngIf="showSearch" type="text" [(ngModel)]="searchValue" (input)="searchDrinks()" 
+      <input *ngIf="showSearch" type="text" [(ngModel)]="searchValue" (input)="searchDrinks()"
       placeholder="Search..." class="px-4 py-2 text-lg rounded-md border-gray-300 focus:outline-none focus:ring-2
        focus:ring-blue-500 focus:border-transparent">
     </p>
   </div>
 
   <form class="float-right m-7">
-    <button type="button" (click)="createZeroDrink()" 
+    <button type="button" (click)="createZeroDrink()"
     class="bg-blue-500 hover:bg-blue-700 text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center">Opret Drink</button>
   </form>
   <div class="grid grid-cols-4 gap-4">
@@ -37,6 +37,16 @@
       text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Rediger Drink</button>
         <button type="button" *ngIf="userId == drink.authorId" (click)="deleteZeroDrink(drink.id)" class="bg-red-400 hover:bg-red-700
       text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Slet Drink</button>
+      <div *ngFor="let rating of ratings">
+        <div *ngFor="let user of users">
+          <p *ngIf="rating.drinkId === drink.id && rating.userId === user.id">{{ rating.userId === user.id ? user.username: 'null' }}: {{ rating.comment }}</p>
+        </div>
+      </div>
+
+      <textarea *ngIf="userId" [(ngModel)]="ratingComment.comment" placeholder="Skriv en kommentar"></textarea>
+      <button *ngIf="userId" type="button" (click)="postComment(drink.id)" class="bg-blue-500 hover:bg-blue-700 text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">
+        Kommenter
+      </button>
     </div>
   </div>
 

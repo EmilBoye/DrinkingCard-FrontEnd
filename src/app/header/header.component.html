@@ -12,7 +12,7 @@
         <a (click)="ngOnInit()" routerLink="/alkohol" routerLinkActive="active">Alkohol</a>
         <a (click)="ngOnInit()" routerLink="/alkoholfri" routerLinkActive="active">Alkohol Fri</a>
         <a *ngIf="!userId" routerLink="/login" routerLinkActive="active">Login</a>
-        <a routerLink="/opret" routerLinkActive="active">Opret</a>
+        <a *ngIf="!userId" routerLink="/opret" routerLinkActive="active">Opret</a>
         <a *ngIf="userId" routerLink="/login" (click)="onLogout()" routerLinkActive="active">Log ud</a>
 
     </div>
