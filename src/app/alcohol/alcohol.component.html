@@ -29,12 +29,10 @@
         <p class="text-gray-700 text-base">
           <p>Beskrivelse: {{drink.description}}</p><br>
           <p>Ingredienser: {{drink.ingredients}}</p><br>
-          <p>Dato: {{drink.publishDate}}</p>
           <button type="button" *ngIf="userId == drink.authorId" (click)="editDrink(drink.id)" class="bg-blue-500 hover:bg-blue-700
           text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Ændre</button>
           <button type="button" *ngIf="userId == drink.authorId" (click)="deleteDrink(drink.id)" class="bg-red-400 hover:bg-red-700
           text-white text-m font-mono py-1 px-4 rounded-full justify-items-center">Slet</button><br>
-
           <div *ngFor="let rating of ratings">
             <div *ngFor="let user of users">
               <p *ngIf="rating.drinkId === drink.id && rating.userId === user.id">{{ rating.userId === user.id ? user.username: 'null' }}: {{ rating.comment }}</p>
