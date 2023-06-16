@@ -1,7 +1,6 @@
 <div class="bg-gray-300 min-h-screen">
-    <p>alcohol-update-drink works!</p>
     <div class="bg-gray-300 justify-center">
-    <div class="" *ngIf="updateDrink">
+    <div class="text-center" *ngIf="updateZeroDrink">
       <br>
       <br>
       <h1 class="text-3xl text-center font-mono">Opdater drink</h1>
@@ -9,34 +8,35 @@
       <br>
       <form #drinkForm="ngForm" class="justify-center">
         <div class="mb-3">
-          <label class="form-label">Id</label>
-          <input type="text" class="form-control" name="id" [(ngModel)]="updateDrink.id">
+          <label
+            class="block text-white-700 font-medium mb-2"
+            >Titel</label>
+          <input type="text" class="form-input rounded-lg p-3" name="title" placeholder="Titel" [(ngModel)]="updateZeroDrink.title">
         </div>
         <div class="mb-3">
-          <label class="form-label">Oprettet af</label>
-          <input type="text" class="form-input" name="author" [(ngModel)]="updateDrink.author">
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Titel</label>
-          <input type="text" class="form-input" name="title" [(ngModel)]="updateDrink.title">
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Beskrivelse</label>
-          <textarea name="description" class="form-control" [(ngModel)]="updateDrink.description"></textarea>
+          <label class="block text-white-700 font-medium mb-2">Beskrivelse</label>
+          <textarea name="description" class="form-control" placeholder="Beskrivelse" [(ngModel)]="updateZeroDrink.description"></textarea>
         </div>
         <!-- <div class="mb-3">
           <label class="form-label">Titel</label>
-          <input type="text" class="form-input" name="title" [(ngModel)]="updateDrink.title">
+          <input type="text" class="form-input" name="title" [(ngModel)]="updateZeroDrink.title">
         </div> -->
         <div class="mb-3">
-          <input type="file" name="featuredimageurl" [(ngModel)]="updateDrink.featuredImageUrl">
+          <label class="block text-white-700 font-medium mb-2">Foto</label>
+          <input type="file" accept=".jpg,.png" (change)="onSubmitFeaturedImage($event)" class="center-input ">
+        </div>
+        <div class="mb-3">
+          <label
+            class="block text-white-700 font-medium mb-2"
+            >Ingredienser</label>
+          <textarea name="ingredients" class="form-control rounded-lg p-3" placeholder="Ingredienser" [(ngModel)]="updateZeroDrink.ingredients"></textarea>
         </div>
         <!-- <div class="mb-3 justify-center">
           <label class="form-label">Type af alkohol</label>
           <input type="text" class="form-input" name="alcoholtype" [(ngModel)]="drink.alcoholType">
         </div> -->
         <button class="bg-blue-500 hover:bg-blue-700
-        text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" (click)="onSubmit()">Opret</button>
+        text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" (click)="onSubmit()">Gem</button>
       </form>
     </div>
     </div>

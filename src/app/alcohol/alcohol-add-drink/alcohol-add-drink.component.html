@@ -16,7 +16,7 @@
       <textarea name="description" class="form-control" [(ngModel)]="drink.description"></textarea>
     </div>
     <div class="mb-3">
-      <input type="file" name="featuredimageurl" [(ngModel)]="drink.featuredImageUrl">
+      <input type="file" accept=".jpg,.png" (change)="onSubmitFeaturedImage($event)" class="center-input ">
     </div>
     <div class="mb-3">
       <label class="form-label">Ingredienser</label>

@@ -31,36 +31,26 @@ export class AlcoholAddDrinkComponent implements OnInit {
   }
   createDrink():void{
     if(this.drink.title.length >= 5 && this.drink.ingredients.length > 0){
-      // this.addIngredient();
       this.drink.authorId = JSON.parse(localStorage.getItem('User')|| '{}');
-
-      console.log(this.drink.authorId);
-
       this.alcoholService.getUserById(this.drink.authorId).subscribe(user =>{
         this.drink.author = user.username;
         console.log(this.drink.author);
         this.alcoholService.postDrink(this.drink).subscribe((createdDrink:any) => {
           this.drink = createdDrink;
         });
-
       });
-      console.log(this.drink.author);
-
     }
     else{
       alert("Titlen skal være mere eller lig med 5 karakter")
     }
   }
-  // addIngredient(ingredient: string): void {
-  //   this.drink.ingredients.push(ingredient);
-  // }
-  // this.addIngredient(this.drink.ingredients);
-  // this.addIngredient(this.drink.ingredients);
-
-  // addIngredient(): void {
-  //   if(this.drink.ingredients){
-  //     const ingredientArray = this.drink.ingredients.split('. ');
-  //     this.drink.ingredients = ingredientArray.join('.\n');
-  //   }
-  // }
+  onSubmitFeaturedImage(event: any) {
+    if (event.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.drink.featuredImageUrl = e.target.result;
+      }
+    }
+  };
 }
