@@ -28,6 +28,7 @@ import { HeaderComponent } from '../header/header.component';
       alcohol: new Alcohol,
       nonalcohol: new NonAlcohol
     }
+
     loginForm = new FormGroup({
       userName: new FormControl('', [Validators.required]),
       passwordHash: new FormControl('', [Validators.required]),
