@@ -50,6 +50,7 @@ export class AlcoholComponent implements OnInit {
     alert("Denne side er kun for personer over 18 år.");
   }
 
+  // Opretter en drink. Med hjælp af authService som har nogle metoder og i dette tilfælde IsLoggedIn.
   createDrink(): void {
     //Hvis brugeren er logget ind får man tilladelse her til at gå videre
     if (this.authService.isLoggedIn()) {
@@ -62,6 +63,8 @@ export class AlcoholComponent implements OnInit {
     }
   }
 
+  // Her er en metode til at komme over på rediger drink siden. Den navigerer med hjælp af router og tjekker med id.
+  // Programmet ved allerede hvem der har oprettet drinken.
   editDrink(id: any): void {
     this.router.navigate(['alkohol/opdater/', id]);
   }
@@ -76,6 +79,9 @@ export class AlcoholComponent implements OnInit {
     this.showSearch = true;
   }
 
+// searchDrinks-metoden henter alle drinks ved hjælp af getAllDrinks.
+// Når resultatet er modtaget, abonnerer den på listen af drikke og filtrerer dem baseret på en betingelse.
+// Betinelsen søger efter en delstreng i drink.ingredients ved hjælp af includes-metoden.
   searchDrinks(): void {
     this.alcoholService.getAllDrinks().subscribe((drinks) => {
       this.drinks = drinks.filter((drink) =>
@@ -84,6 +90,8 @@ export class AlcoholComponent implements OnInit {
     });
   }
 
+  // Tjekker om drinkId og userId matcher.
+  // For at kunne en kommentar som en anden bruger tjekkes brugernavnet også
   postComment(drinkID: number): void {
     this.ratingComment.drinkId = drinkID;
     this.ratingComment.userId = this.userId;
