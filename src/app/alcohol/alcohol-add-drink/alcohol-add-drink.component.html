@@ -1,31 +1,47 @@
-<div class="bg-gray-300 min-h-screen">
-  <div class="bg-gray-300 justify-center"></div>
-<div class="text-center" *ngIf="drink">
-  <br>
-  <br>
-  <h1 class="text-3xl text-center font-mono">Opret ny drink</h1>
-  <br>
-  <br>
-  <form #drinkForm="ngForm" class="justify-center">
+<div class="flex items-center justify-center min-h-screen bg-gray-300 py-10">
+  <form #drinkForm="ngForm" class="bg-white max-w-md mx-auto p-6 rounded-lg shadow-lg">
     <div class="mb-3">
-      <label
-            class="block text-white-700 font-medium mb-2"
-            >Titel</label>
-      <input type="text" class="form-input rounded-lg p-3" placeholder="Titel" name="title" [(ngModel)]="drink.title">
+      <label class="block text-gray-700 font-medium mb-2">Titel</label>
+      <input
+        type="text"
+        class="form-input rounded-lg p-3 w-full border border-gray-300"
+        placeholder="Titel"
+        name="title"
+        [(ngModel)]="drink.title"
+      />
     </div>
     <div class="mb-3">
-      <label class="block text-white-700 font-medium mb-2">Beskrivelse</label>
-      <textarea name="description" class="form-control rounded-lg p-3" placeholder="Beskrivelse" [(ngModel)]="drink.description"></textarea>
+      <label class="block text-gray-700 font-medium mb-2">Beskrivelse</label>
+      <textarea
+        name="description"
+        class="form-control rounded-lg p-3 w-full border border-gray-300"
+        placeholder="Beskrivelse"
+        [(ngModel)]="drink.description"
+      ></textarea>
     </div>
     <div class="mb-3">
-      <label class="block text-white-700 font-medium mb-2">Ingredienser</label>
-      <input type="text" class="form-input rounded-lg p-3" placeholder="Ingredienser" name="ingredients" [(ngModel)]="drink.ingredients">
+      <label class="block text-gray-700 font-medium mb-2">Ingredienser</label>
+      <input
+        type="text"
+        class="form-input rounded-lg p-3 w-full border border-gray-300"
+        placeholder="Ingredienser"
+        name="ingredients"
+        [(ngModel)]="drink.ingredients"
+      />
     </div>
     <div class="mb-3">
-      <input type="file" accept=".jpg,.png" (change)="onSubmitFeaturedImage($event)" class="center-input ">
+      <input
+        type="file"
+        accept=".jpg,.png"
+        (change)="onSubmitFeaturedImage($event)"
+        class="form-input w-full border border-gray-300 rounded-lg p-3"
+      />
     </div>
-    <button class="bg-blue-500 hover:bg-blue-700
-    text-white text-lg font-mono py-1 px-4 rounded-full justify-items-center" (click)="createDrink()">Opret</button>
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white text-lg font-mono py-1 px-4 rounded-full w-full"
+      (click)="createDrink()"
+    >
+      Opret
+    </button>
   </form>
-</div>
 </div>

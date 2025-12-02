@@ -31,6 +31,7 @@
               placeholder="Adgangskode"
             />
           </div>
+
           <div class="flex justify-center space-x-4 grid-cols-2">
             <button
               class="bg-blue-500 text-white p-2 rounded-lg"
@@ -38,6 +39,12 @@
               [disabled]="loginForm.invalid"
             >
               Login
+            </button>
+            <button
+              class="bg-green-500 text-white p-2 rounded-lg"
+              (click)="onCreateAccount()"
+            >
+              Opret Konto
             </button>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Alcohol, AlcoholType } from 'src/app/models/Alcohol-model';
 import { User } from 'src/app/models/User-model';
 import { HttpService } from 'src/app/service/httpservice.service';
@@ -11,7 +12,7 @@ import { HttpService } from 'src/app/service/httpservice.service';
 export class AlcoholAddDrinkComponent implements OnInit {
   alcoholPost: Alcohol[] = [];
 
-  constructor(private alcoholService:HttpService) { }
+  constructor(private alcoholService:HttpService, private router:Router) { }
 
   // drink er en variable med typen any. Det er de ting der skal bruges til at oprette en drink.
   drink: any = {
@@ -44,7 +45,9 @@ export class AlcoholAddDrinkComponent implements OnInit {
         this.alcoholService.postDrink(this.drink).subscribe((createdDrink:any) => {
           this.drink = createdDrink;
         });
+
       });
+      this.router.navigate(['alkohol']);
     }
     else{
       alert("Titlen skal være mere eller lig med 5 karakter")

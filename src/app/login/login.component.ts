@@ -47,6 +47,10 @@ import { HeaderComponent } from '../header/header.component';
       console.warn("loginForm", this.user);
     }
 
+    onCreateAccount(){
+      this.router.navigate(['opret'])
+    }
+
     onSubmitLogin(): void {
       /* De to linjer der er her tager og tjekker værdien for username og passwordet.
       Da man prøver at tildele variablerne en mulig værdi med undefined så kan man benytte sig af

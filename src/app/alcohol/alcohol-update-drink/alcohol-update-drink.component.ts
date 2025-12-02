@@ -11,7 +11,7 @@ import { HttpService } from 'src/app/service/httpservice.service';
 export class AlcoholUpdateDrinkComponent implements OnInit {
 
   alcoholUpdate: Alcohol[] = [];
-  constructor(private alcoholService:HttpService, router:Router, public actRoute:ActivatedRoute) { }
+  constructor(private alcoholService:HttpService, private router:Router, public actRoute:ActivatedRoute) { }
 
   //Any er bare et objekt som er tomt. Den får kun de værdier man selv indsætter.
   updateDrink: any = {
@@ -52,6 +52,7 @@ export class AlcoholUpdateDrinkComponent implements OnInit {
         console.log(data);
         this.alcoholUpdate = data;
       });
+      this.router.navigate(['alkohol']);
     }
     else{
       alert("Titlen skal være mere eller lig med 5 karakter!");
